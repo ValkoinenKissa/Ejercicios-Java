@@ -1,0 +1,34 @@
+package experimentos;
+/**
+ * @author alberto bollo
+ * @since 18/10/2023
+ */
+
+/*
+ * Este programa tratara de obtener la sucesion de los primeros 25
+ * numeros de la serie Fibonacci
+ * Formula general n = n-1 + n-2
+ */
+
+public class Fibonacci {
+	public static void main(String[] args) {
+		
+		//Declaramos un bucle for ya que conocemos las iteraciones exactas del bucle
+		int f1, f0, fibo, n;
+		f0 = 0;
+		f1 = 1;
+		
+		n = f1 + f0;
+		for(int i =0; i<23; i++) {
+			f0++;
+			for (int j =1; j<24; j++) {
+				f1++;
+			}
+			
+			
+		}
+		System.out.println("Fibonacci es igual a " + f0 + "+" + f1);
+
+	}
+
+}
