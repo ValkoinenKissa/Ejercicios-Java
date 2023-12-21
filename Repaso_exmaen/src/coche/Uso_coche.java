@@ -38,8 +38,6 @@ public class Uso_coche {
 				
 				
 				
-				
-				
 				System.out.println(c1.aString());
 				System.out.println(c2.aString());
 				System.out.println(c3.aString());
