@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="experimentos.Fibonacci"/>
     <fullyQualifiedTypeName name="java.util.Base64"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="javax.swing.text.html.parser.Entity"/>
     <fullyQualifiedTypeName name="javax.naming.spi.DirStateFactory.Result"/>
     <fullyQualifiedTypeName name="java.awt.Taskbar.State"/>
     <fullyQualifiedTypeName name="java.util.Stack"/>
+    <fullyQualifiedTypeName name="poo.IES_Francisco_Goya"/>
+    <fullyQualifiedTypeName name="ruleta.Ruleta"/>
+    <fullyQualifiedTypeName name="ruleta.Jugador"/>
+    <fullyQualifiedTypeName name="ruleta.Principal"/>
+    <fullyQualifiedTypeName name="javax.swing.text.html.HTMLDocument.HTMLReader.PreAction"/>
+    <fullyQualifiedTypeName name="javax.swing.text.html.parser.Entity"/>
+    <fullyQualifiedTypeName name="primer_trimestre.Fecha_nacimientos"/>
+    <fullyQualifiedTypeName name="java.security.KeyStore.Entry"/>
+    <fullyQualifiedTypeName name="dados.Dados"/>
+    <fullyQualifiedTypeName name="alumno.Alumnos"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="coche.Coche"/>
+    <fullyQualifiedTypeName name="ies.Profesores"/>
+    <fullyQualifiedTypeName name="java.lang.Enum"/>
+    <fullyQualifiedTypeName name="array_alumnos.Alumno"/>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="cuenta_banco.Cuenta"/>
+    <fullyQualifiedTypeName name="bicicleta.Bicicleta"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="bicicleta.bicicletas.Bicicleta"/>
+    <fullyQualifiedTypeName name="bicicleta.bicicletas.BicicletaMontaña"/>
+    <fullyQualifiedTypeName name="bicicleta.bicicletas.BicicletaTandem"/>
+    <fullyQualifiedTypeName name="granja.animales.Vacas"/>
+    <fullyQualifiedTypeName name="granja.empleados.Veterinario"/>
+    <fullyQualifiedTypeName name="granja.empleados.Granjero"/>
+    <fullyQualifiedTypeName name="granja.empleados.Empleado"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="granja.animales.Animal"/>
 </qualifiedTypeNameHistroy>
