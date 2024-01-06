@@ -1,52 +1,33 @@
 package granja.animales;
 
 public class Gallina extends Animal {
-	private int puestasDeHuevos = 0;
+	private int puestasDeHuevos;
 	
 	public Gallina(String etiqueta) {
-		super(1, etiqueta, "Gallinas", 1);
-	}
-
-	public String getPuestasDeHuevos() {
-		return "El historico de huevos que ha puesto la gallina es de: " + puestasDeHuevos;
-	}
-
-	public void setPuestasDeHuevos(int puestasDeHuevos) {
-		this.puestasDeHuevos = puestasDeHuevos;
+		super(1, etiqueta, Animal.GALLINA, 1);
+		puestasDeHuevos = 0;
 	}
 	
 	
-	public static void hacerSonido() {
-		System.out.println("PIO");
+	public  void hacerSonido() {
+		System.out.println(this.getEtiqueta() + "PIO");
 	}
 	
-	public  String produccionHuevos(Animal animal) {
-		boolean marcadorSalud = this.isMarcadorSalud();
-		String produccionGallina;
-		if (marcadorSalud) {
-			
-			produccionGallina = "La gallina ha producido 3 huevos";
-			puestasDeHuevos += 3;
-			
-		}
-		
-		else {
-			
-			produccionGallina = "La gallina ha producido 1 huevos";
-			puestasDeHuevos += 1;
-		}
-		
-		return produccionGallina;
-		
-	}
 	
 	public void producir() {
-		String produccion = "La gallina ha producido un huevo";
-		hacerSonido();
-		System.out.println("El animal " + getEtiqueta() + " tiene un peso de " +  getPeso() + " kg " + " y su salud es " + isMarcadorSalud() + 
-				", el nombre de la especie es: " + getNombreEspecie() + " la cantidad de comida que come es de: " + getDosis_comida() + " kg " +
-				 produccion);
+		int numHuevos;
+		if(this.isMarcadorSalud())
+			numHuevos = 3;
+		else {
+			numHuevos = 1;
+		}
+		puestasDeHuevos = numHuevos;
+		producir(numHuevos + "huevos");
 		
+	}
+	
+	public int setNumDePuestas() {
+		return puestasDeHuevos;
 	}
 
 }

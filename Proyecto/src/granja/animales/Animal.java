@@ -6,6 +6,10 @@ public class Animal {
 	private boolean marcadorSalud;
 	private String nombreEspecie;
 	private int dosis_comida;
+	public static final String CERDO = "Cerdo";
+	public static final String VACA = "Vaca";
+	public static final String GALLINA = "Gallina";
+
 	
 	public Animal() {}
 
@@ -69,19 +73,19 @@ public class Animal {
 	}
 	
 	
-	public static void hacerSonido() {
-		System.out.println("MMM");
+	public void hacerSonido() {
+		System.out.println(etiqueta + "MMM");
 	}
 	
 	// Trabajar en este metodo mas tarde
 	public double comer(boolean eficiencia) {
 		if (eficiencia && marcadorSalud) {
-			peso += dosis_comida * 0.1;
+			peso += (dosis_comida / 10);
 			
 		}
 		
 		else {
-			peso += dosis_comida * 0.01;
+			peso += (dosis_comida / 10);
 		}
 		
 		
@@ -90,8 +94,8 @@ public class Animal {
 	}
 	
 	public boolean recibirCuidados(boolean experiencia) {
-		if (experiencia = true) {
-			marcadorSalud = true;
+		marcadorSalud = experiencia;
+		if (marcadorSalud) {
 			hacerSonido();
 			
 		}
@@ -105,12 +109,8 @@ public class Animal {
 	}
 	
 	
-	public void producir() {
-		String produccion = "nada";
-		hacerSonido();
-		System.out.println("El animal" + etiqueta + " tiene un peso de " +  peso + " y su salud es " + marcadorSalud + 
-				" el nombre de la especie es " + nombreEspecie + " la cantidad de comida que come es de: " +  dosis_comida + " kg " 
-				+ " y produce " + produccion);
+	public void producir(String produccion) {
+		System.out.println("Especie: " + nombreEspecie + " Etiqueta " + etiqueta + " Produccion: " + produccion);
 		
 	}
 	

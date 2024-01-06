@@ -8741,3 +8741,8 @@ Binding(CTRL+ARROW_UP,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.textEditorScope,,,user)
+
+!ENTRY org.eclipse.core.resources 2 2 2024-01-06 20:45:44.704
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2024-01-06 20:45:44.704
+!MESSAGE The project description file (.project) for 'Entornos_de_desarollo' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.

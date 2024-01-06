@@ -1,51 +1,47 @@
 package granja.animales;
+
 import java.util.Random;
-public class Vacas extends Animal{
-    Random random = new Random();
-	private boolean preñada = false;
+
+public class Vacas extends Animal {
+	Random random = new Random();
+	private boolean preñada;
+
 	public Vacas(String etiqueta) {
-		super(150, etiqueta, "Vacas", 15);
-		
+		super(150, etiqueta, Animal.VACA, 15);
+		preñada = false;
 	}
-	public boolean isPreñada() {
-		return preñada;
+
+	public void hacerSonido() {
+		System.out.println(this.getEtiqueta() + "MUU");
 	}
-	public void setPreñada(boolean preñada) {
-		this.preñada = preñada;
+
+	private void preñadaAleatoria() {
+		Random generador = new Random();
+		preñada = generador.nextBoolean();
+
 	}
 	
-	
-	public static void hacerSonido() {
-		System.out.println("MUU");
-	}
-	
-	public String producirLeche() {
-		String produccionVaca;
-		boolean marcadorSalud = this.isMarcadorSalud();
-        int numeroAleatorio = random.nextInt(2) + 1;
-    	preñada = (numeroAleatorio == 2);
-    	setPreñada(preñada);
-		if (marcadorSalud && preñada) {
-			produccionVaca = "La vaca ha producido 10 litros de leche";
+	public void producir() {
+		preñadaAleatoria();
+		String resultado;
+		int litrosLeche;
+		if(preñada) {
+			if(this.isMarcadorSalud())
+			litrosLeche = 10;
 			
+			else
+			litrosLeche = 2;
+		resultado = litrosLeche + " litros de leche";
+
 		}
 		
 		else {
+			resultado = "La vaca no ha producido nada";
 
-			produccionVaca = "La vaca ha producido 2 litros de leche";
 		}
 		
-		return produccionVaca;
-	
-	}
-	
-	
-	public void producir() {
-		String produccion = producirLeche();
-		hacerSonido();
-		System.out.println("El animal " + getEtiqueta() + " tiene un peso de " +  getPeso() + " kg " + " y su salud es " + isMarcadorSalud() + 
-				", el nombre de la especie es: " + getNombreEspecie() + " la cantidad de comida que come es de: " + getDosis_comida() + " kg " +
-				 produccion);
+		producir(resultado);
+
 	}
 
 }

@@ -33,5 +33,6 @@
     <fullyQualifiedTypeName name="granja.empleados.Granjero"/>
     <fullyQualifiedTypeName name="granja.empleados.Empleado"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="granja.animales.Cerdos"/>
     <fullyQualifiedTypeName name="granja.animales.Animal"/>
 </qualifiedTypeNameHistroy>
