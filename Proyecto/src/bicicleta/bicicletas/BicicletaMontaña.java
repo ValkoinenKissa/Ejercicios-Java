@@ -39,7 +39,7 @@ public class BicicletaMontaña extends Bicicleta {
 	}
 	@Override
 	public int acelerar() {
-		int nuevaVelocidad = getVelocidadActual() *3;
+		int nuevaVelocidad = this.velocidadActual *3;
 		setVelocidadActual(nuevaVelocidad);
 		return nuevaVelocidad;
 

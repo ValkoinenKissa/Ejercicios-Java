@@ -1,24 +1,17 @@
 package bicicleta.bicicletas;
 
-public class Bicicleta {
-	private int velocidadActual;
+public class Bicicleta extends Vehiculo implements Imprimible {
+
 	private int platoActual;
 	private int pinonActual;
-	
-	public Bicicleta(int velocidadActual, int platoActual, int pinonActual) {
-		this.velocidadActual = velocidadActual;
+
+	public Bicicleta(int valocidadActual, int platoActual, int pinonActual) {
+		super(valocidadActual);
 		this.platoActual = platoActual;
 		this.pinonActual = pinonActual;
-		
 	}
-
-	public int getVelocidadActual() {
-		return velocidadActual;
-	}
-
-	public void setVelocidadActual(int velocidadActual) {
-		this.velocidadActual = velocidadActual;
-	}
+	
+	
 
 	public int getPlatoActual() {
 		return platoActual;
@@ -91,4 +84,41 @@ public class Bicicleta {
 		pinonActual = 1;
 	}
 
+
+
+	@Override
+	public void imprime() {
+		String datos = "Velocidad actual: " + this.velocidadActual + " Piñon actual: " + this.pinonActual + " Plato actual: " + this.platoActual;
+		System.out.println(datos);
+	}
+
+
+
+	@Override
+	public void numeroPasajeros(int numPasajeros) {
+		System.out.println("Por defecto la bicicleta normal solo puede llevar un pasajero");
+	}
+
+
+
+	@Override
+	public int establecerRuedas() {
+		int ruedas = 2;
+		return ruedas;
+	}
+
+
+
+	@Override
+	public void getAtributos() {
+		
+		int[] atributos = {this.pinonActual, this.platoActual, super.velocidadActual};
+		
+		for(int i=0; i < atributos.length; i++) {
+			System.out.println(atributos[i]);
+		
+		}
+
+}
+	
 }

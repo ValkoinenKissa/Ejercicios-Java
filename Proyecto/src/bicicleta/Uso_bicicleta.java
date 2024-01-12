@@ -1,6 +1,7 @@
 package bicicleta;
 
 import bicicleta.bicicletas.*;
+import bicicleta.otros_vehiculos.Coche;
 
 public class Uso_bicicleta {
 
@@ -11,9 +12,10 @@ public class Uso_bicicleta {
 		Bicicleta miBicicleta = new Bicicleta(15, 2, 3);
 		Bicicleta tuBicicleta = new Bicicleta(15, 2, 3);
 		BicicletaMontaña biciMontaña1 = new BicicletaMontaña(10, 4, 3);
-		BicicletaMontaña biciMontaña2 = new BicicletaMontaña(10, 4, 3);
 		BicicletaTandem biciTandem1 = new BicicletaTandem(10, 6, 2);
 		BicicletaTandem biciTandem2 = new BicicletaTandem(20, 6, 2);
+		
+		Coche coche1 = new Coche(40, 7, 4);
 
 		
 		miBicicleta.cambiarPinon(5);
@@ -31,6 +33,11 @@ public class Uso_bicicleta {
 		biciTandem1.cambiarPinon(5);
 		biciTandem1.cambiarPlato(3);
 		biciTandem1.acelerar();
+		biciTandem1.frenar();
+		
+		coche1.acelerar();
+		coche1.establecerRuedas();
+		coche1.setNumPuertas(3);
 		
 		System.out.println("************************************Mi bicicleta*****************************");
 
@@ -51,7 +58,7 @@ public class Uso_bicicleta {
 		System.out.println("La velocidad es de: " + biciMontaña1.getVelocidadActual());
 		System.out.println("El plato seleccionado es: " + biciMontaña1.getPlatoActual());
 		
-		System.out.println("**************************************Bicicleta Montaña*********************");
+		System.out.println("**************************************Bicicleta Tandem*********************");
 		
 		System.out.println("El cambio seleccionado es: " + biciTandem1.getPinonActual());
 		System.out.println("La velocidad es de: " + biciTandem1.getVelocidadActual());
@@ -72,7 +79,24 @@ public class Uso_bicicleta {
 			System.out.println("La velocidad es de: " + arrayBicis[i].getVelocidadActual());
 
 		}
+		
+		System.out.println("**************************************Impresion de datos de coche*********************");
+		
+		System.out.println(coche1.getNumPuertas());
+		System.out.println(coche1.getVelocidadActual());
 
+
+		
+		
+		System.out.println("**************************************Impresion de datos de vehiculo*********************");
+
+		biciMontaña1.imprime();
+		biciTandem2.imprime();
+		miBicicleta.imprime();
+		
+		System.out.println("**************************************Impre valor de atributos de objeto*********************");
+		
+		miBicicleta.getAtributos();
 
 	}
 

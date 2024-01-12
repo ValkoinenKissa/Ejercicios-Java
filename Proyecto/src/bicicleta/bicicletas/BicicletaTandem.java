@@ -23,7 +23,7 @@ public class BicicletaTandem extends Bicicleta {
 	
 	
 	public int acelerar() {
-		int nuevaVelocidad = getVelocidadActual() *4;
+		int nuevaVelocidad = this.velocidadActual *4;
 		setVelocidadActual(nuevaVelocidad);
 		return nuevaVelocidad;
 	}
