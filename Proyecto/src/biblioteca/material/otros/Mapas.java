@@ -13,7 +13,7 @@ public class Mapas extends Material implements Consultables, Mantenibles {
 
 	@Override
 	public void detalleMaterial() {
-		String[] infoMaterial = { String.valueOf(super.id), super.titulo, super.fechaPublicacion };
+		String[] infoMaterial = { String.valueOf(this.id), this.titulo, this.fechaPublicacion };
 
 		for (int i = 0; i < infoMaterial.length; i++) {
 			System.out.println(infoMaterial[i]);
@@ -22,13 +22,13 @@ public class Mapas extends Material implements Consultables, Mantenibles {
 
 	@Override
 	public void mantenible() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Realizando mantenimiento sobre: " + this.getTitulo());
+
 	}
 
 	@Override
 	public void consultables() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Consultando la info sobre: " + this.getTitulo());
+
 	}
 }

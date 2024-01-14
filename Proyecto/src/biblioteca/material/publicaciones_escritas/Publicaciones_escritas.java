@@ -14,7 +14,7 @@ public class Publicaciones_escritas extends Material {
 
 	@Override
 	public void detalleMaterial() {
-		String [] infoMaterial = {String.valueOf(super.id), super.titulo, super.fechaPublicacion, this.editorial, this.idioma};
+		String [] infoMaterial = {String.valueOf(this.id), this.titulo, this.fechaPublicacion, this.editorial, this.idioma};
 		
 		for(int i =0; i < infoMaterial.length; i++) {
 			System.out.println(infoMaterial[i]);

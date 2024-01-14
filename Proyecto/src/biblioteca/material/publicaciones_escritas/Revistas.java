@@ -15,6 +15,19 @@ public class Revistas extends Libros implements Consultables{
 
 	@Override
 	public void consultables() {
+		System.out.println("Consultando la info sobre: " + this.getTitulo());
 	}
+
+	@Override
+	public void detalleMaterial() {
+		String [] infoMaterial = {String.valueOf(this.id), this.titulo, this.fechaPublicacion, this.editorial, this.idioma, String.valueOf(this.edicion), this.tema};
+		
+		for(int i =0; i < infoMaterial.length; i++) {
+			System.out.println(infoMaterial[i]);
+		}
+	}
+	
+	
+	
 
 }

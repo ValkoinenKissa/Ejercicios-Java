@@ -16,7 +16,7 @@ public class Cintas_VHS extends Publicaciones_Audiovisuales implements Mantenibl
 
 	@Override
 	public void detalleMaterial() {
-		String [] infoMaterial = {String.valueOf(super.id), super.titulo, super.fechaPublicacion, String.valueOf(duraccion), this.genero, String.valueOf(this.calidadImagen), String.valueOf(this.durabilidad)};
+		String [] infoMaterial = {String.valueOf(this.id), this.titulo, this.fechaPublicacion, String.valueOf(duraccion), this.genero, String.valueOf(this.calidadImagen), String.valueOf(this.durabilidad)};
 		
 		for(int i =0; i < infoMaterial.length; i++) {
 			System.out.println(infoMaterial[i]);
@@ -27,14 +27,14 @@ public class Cintas_VHS extends Publicaciones_Audiovisuales implements Mantenibl
 
 	@Override
 	public void consultables() {
-		System.out.println("Consultando informacion sobre: " + super.titulo + ".");
+		System.out.println("Consultando informacion sobre: " + this.titulo + ".");
 		
 		
 	}
 
 	@Override
 	public void mantenible() {
-		System.out.println("Mantenimiento sobre: " + super.titulo + ".");
+		System.out.println("Mantenimiento sobre: " + this.titulo + ".");
 
 		
 	}

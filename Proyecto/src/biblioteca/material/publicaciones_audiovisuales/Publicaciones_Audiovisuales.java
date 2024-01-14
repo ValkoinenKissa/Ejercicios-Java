@@ -14,7 +14,7 @@ public class Publicaciones_Audiovisuales extends Material{
 
 	@Override
 	public void detalleMaterial() {
-		String [] infoMaterial = {String.valueOf(super.id), super.titulo, super.fechaPublicacion, String.valueOf(duraccion), this.genero};
+		String [] infoMaterial = {String.valueOf(this.id), this.titulo, this.fechaPublicacion, String.valueOf(duraccion), this.genero};
 		
 		for(int i =0; i < infoMaterial.length; i++) {
 			System.out.println(infoMaterial[i]);
