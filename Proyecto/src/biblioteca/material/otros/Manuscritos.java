@@ -1,8 +1,8 @@
 package biblioteca.material.otros;
 
-import biblioteca.material.Consultables;
-import biblioteca.material.Mantenibles;
 import biblioteca.material.Material;
+import biblioteca.material.interfaces.Consultables;
+import biblioteca.material.interfaces.Mantenibles;
 
 public class Manuscritos extends Material implements Consultables, Mantenibles {
 
@@ -13,11 +13,8 @@ public class Manuscritos extends Material implements Consultables, Mantenibles {
 
 	@Override
 	public void detalleMaterial() {
-		String[] infoMaterial = { String.valueOf(this.id), this.titulo, this.fechaPublicacion };
-
-		for (int i = 0; i < infoMaterial.length; i++) {
-			System.out.println(infoMaterial[i]);
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

@@ -1,6 +1,6 @@
-package biblioteca.material.publicaciones_escritas;
+package biblioteca.material.publicaciones_escritas.libros;
 
-import biblioteca.material.Consultables;
+import biblioteca.material.interfaces.Consultables;
 
 public class Revistas extends Libros implements Consultables{
 	
@@ -20,14 +20,9 @@ public class Revistas extends Libros implements Consultables{
 
 	@Override
 	public void detalleMaterial() {
-		String [] infoMaterial = {String.valueOf(this.id), this.titulo, this.fechaPublicacion, this.editorial, this.idioma, String.valueOf(this.edicion), this.tema};
-		
-		for(int i =0; i < infoMaterial.length; i++) {
-			System.out.println(infoMaterial[i]);
-		}
+		super.detalleMaterial();
+		System.out.println("La edicion es: " + this.edicion);
+		System.out.println("El tema de la publicación es: " + this.tema);
 	}
-	
-	
-	
 
 }

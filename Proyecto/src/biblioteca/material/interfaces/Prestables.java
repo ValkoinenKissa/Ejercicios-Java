@@ -1,4 +1,4 @@
-package biblioteca.material;
+package biblioteca.material.interfaces;
 
 public interface Prestables {
 		

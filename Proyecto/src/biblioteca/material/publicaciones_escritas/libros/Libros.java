@@ -1,7 +1,8 @@
-package biblioteca.material.publicaciones_escritas;
+package biblioteca.material.publicaciones_escritas.libros;
 
-import biblioteca.material.Mantenibles;
-import biblioteca.material.Prestables;
+import biblioteca.material.interfaces.Mantenibles;
+import biblioteca.material.interfaces.Prestables;
+import biblioteca.material.publicaciones_escritas.Publicaciones_escritas;
 
 public class Libros extends Publicaciones_escritas implements Prestables, Mantenibles {
 
@@ -12,16 +13,16 @@ public class Libros extends Publicaciones_escritas implements Prestables, Manten
 		super(id, titulo, fechaPublicacion, editorial, idioma);
 		this.numPaginas = numPaginas;
 	}
+	
 
 	@Override
 	public void detalleMaterial() {
-		String[] infoMaterial = { String.valueOf(this.id), this.titulo, this.fechaPublicacion, this.editorial,
-				this.idioma, String.valueOf(this.numPaginas) };
-
-		for (int i = 0; i < infoMaterial.length; i++) {
-			System.out.println(infoMaterial[i]);
-		}
+		super.detalleMaterial();
+		
+        System.out.println("Número de páginas: " + this.numPaginas);
+        System.out.println("Prestado: " + this.prestado);
 	}
+
 
 	@Override
 	public void mantenible() {
@@ -32,7 +33,7 @@ public class Libros extends Publicaciones_escritas implements Prestables, Manten
 	public void prestado() {
 		if (!prestado) {
 			this.prestado = true;
-			System.out.println("El Libro: " + super.getTitulo() + " ha sido prestado");
+			System.out.println("El Libro: " + this.titulo + " ha sido prestado");
 
 		}
 	}
@@ -42,7 +43,7 @@ public class Libros extends Publicaciones_escritas implements Prestables, Manten
 		
 		if(prestado) {
 			this.prestado = false;
-			System.out.println("El Libro: " + super.getTitulo() + " ha sido devuelto");
+			System.out.println("El Libro: " + this.titulo + " ha sido devuelto");
 
 		}
 		

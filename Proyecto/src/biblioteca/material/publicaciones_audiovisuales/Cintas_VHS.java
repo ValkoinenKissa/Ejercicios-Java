@@ -1,7 +1,7 @@
 package biblioteca.material.publicaciones_audiovisuales;
 
-import biblioteca.material.Consultables;
-import biblioteca.material.Mantenibles;
+import biblioteca.material.interfaces.Consultables;
+import biblioteca.material.interfaces.Mantenibles;
 
 public class Cintas_VHS extends Publicaciones_Audiovisuales implements Mantenibles, Consultables{
 	
@@ -14,16 +14,18 @@ public class Cintas_VHS extends Publicaciones_Audiovisuales implements Mantenibl
 		this.durabilidad = durabilidad;
 	}
 
+
+	
+
 	@Override
 	public void detalleMaterial() {
-		String [] infoMaterial = {String.valueOf(this.id), this.titulo, this.fechaPublicacion, String.valueOf(duraccion), this.genero, String.valueOf(this.calidadImagen), String.valueOf(this.durabilidad)};
-		
-		for(int i =0; i < infoMaterial.length; i++) {
-			System.out.println(infoMaterial[i]);
-		}
-				
+		super.detalleMaterial();
+		System.out.println("La calidad de imagen es buena?: " + this.calidadImagen);
+		System.out.println("Durabilidad del 1 al 10: " + this.durabilidad);
 	}
-	
+
+
+
 
 	@Override
 	public void consultables() {

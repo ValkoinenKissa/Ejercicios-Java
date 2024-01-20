@@ -1,15 +1,16 @@
 package biblioteca;
 
 import biblioteca.material.Material;
-import biblioteca.material.Prestables;
+import biblioteca.material.interfaces.Prestables;
 import biblioteca.material.otros.Manuscritos;
 import biblioteca.material.otros.Mapas;
 import biblioteca.material.publicaciones_audiovisuales.Cintas_VHS;
 import biblioteca.material.publicaciones_audiovisuales.DVD;
-import biblioteca.material.publicaciones_escritas.Libros;
-import biblioteca.material.publicaciones_escritas.Novelas;
-import biblioteca.material.publicaciones_escritas.Revistas;
-import biblioteca.material.publicaciones_escritas.Textos_Educativos;
+import biblioteca.material.publicaciones_escritas.libros.Libros;
+import biblioteca.material.publicaciones_escritas.libros.Novelas;
+import biblioteca.material.publicaciones_escritas.libros.Revistas;
+import biblioteca.material.publicaciones_escritas.libros.Textos_Educativos;
+
 import java.util.Random;
 
 public class Uso_biblioteca {
@@ -35,8 +36,8 @@ public class Uso_biblioteca {
 		Revistas revista2 = new Revistas(5743, "Auto Bild", "6/3/1990", "Auto Bild", "Español", 100, 5, "Automoción");
 		
 		//DVDs
-		DVD dvd1 = new DVD(8574, "Deadpool", "19/11/2016", 1.36, "Comedia / Accion", 4);
-		DVD dvd2 = new DVD(8574, "Intelestellar", "29/12/2013", 1.36, "Ciencia Ficcion", 6);
+		DVD dvd1 = new DVD(8574, "Deadpool", "19/11/2016", 1.36, "Comedia / Accion", new String []{"Español, Ingles"});
+		DVD dvd2 = new DVD(8574, "Intelestellar", "29/12/2013", 1.36, "Ciencia Ficcion", new String []{"Aleman, Español, Ingles"});
 		
 		//VHSs
 		Cintas_VHS vhs1 = new Cintas_VHS(3453, "El precio del poder", "1980", 1.20, "Accion", false, 5);
@@ -57,13 +58,13 @@ public class Uso_biblioteca {
 			elementosAleatorios[i] = materialDisponible[indiceAleatorio];
 		}
 		
-		//Array para materiales prestados y consultados
+		
 		
 		Material[] materialesConsultados = new Material[5];
 		Material[] materialesPrestados = new Material[5];
         int prestadosCount = 0; // Contador para realizar un seguimiento de los materiales prestados
         
-        
+        System.err.println("Impresion de Array con 5 materiales escogidos a la zar");
 
         for (int i = 0; i < 5; i++) {
             materialesConsultados[i] = elementosAleatorios[i];
@@ -84,13 +85,14 @@ public class Uso_biblioteca {
         }
         
             
-            
-            System.err.println("Impresion de materiales prestados");
+            System.out.println();
+            System.err.println("Impresion de materiales prestados \n");
             
             for(int i = 0; i < prestadosCount; i++) {
             	materialesPrestados[i].detalleMaterial();
+                System.out.println("******************************");
             	
-            }      
+            } 
 	}
 	
 }

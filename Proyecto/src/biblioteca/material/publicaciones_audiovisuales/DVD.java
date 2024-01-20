@@ -1,32 +1,32 @@
 package biblioteca.material.publicaciones_audiovisuales;
 
-import biblioteca.material.Consultables;
-import biblioteca.material.Prestables;
+import biblioteca.material.interfaces.Consultables;
+import biblioteca.material.interfaces.Prestables;
 
 public class DVD extends Publicaciones_Audiovisuales implements Prestables, Consultables {
 
-	protected int idiomasDisp;
+	protected String[] idiomasDisp;
 	protected boolean prestar;
 
-	public DVD(int id, String titulo, String fechaPublicacion, double duraccion, String genero, int idiomasDisp, boolean prestar) {
+	public DVD(int id, String titulo, String fechaPublicacion, double duraccion, String genero, String [] idiomasDisp, boolean prestar) {
 		super(id, titulo, fechaPublicacion, duraccion, genero);
 		this.idiomasDisp = idiomasDisp;
 		this.prestar = prestar;
 	}
 	
-	public DVD(int id, String titulo, String fechaPublicacion, double duraccion, String genero, int idiomasDisp) {
+	public DVD(int id, String titulo, String fechaPublicacion, double duraccion, String genero, String[] idiomasDisp) {
 		super(id, titulo, fechaPublicacion, duraccion, genero);
 		this.idiomasDisp = idiomasDisp;
 	}
 
+
+
 	@Override
 	public void detalleMaterial() {
-		String[] infoMaterial = { String.valueOf(this.id), this.titulo, this.fechaPublicacion,
-				String.valueOf(duraccion), this.genero, String.valueOf(this.idiomasDisp) };
-
-		for (int i = 0; i < infoMaterial.length; i++) {
-			System.out.println(infoMaterial[i]);
-		}
+		super.detalleMaterial();
+		System.out.println("El numero de idiomas disponibles son: " + this.idiomasDisp);
+		System.out.println("Esta disponible? " + this.prestar);
+		
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class DVD extends Publicaciones_Audiovisuales implements Prestables, Cons
 			
 			this.prestar = true;
 			
-			System.out.println("El dvd: " + this.getTitulo() + " ha sido prestado");
+			System.out.println("El dvd: " + this.titulo + " ha sido prestado");
 			
 		}
 	}
@@ -50,7 +50,7 @@ public class DVD extends Publicaciones_Audiovisuales implements Prestables, Cons
 		if(prestar) {
 			this.prestar = false;
 			
-			System.out.println("El dvd: " + this.getTitulo() + " ha sido devuleto");
+			System.out.println("El dvd: " + this.titulo + " ha sido devuleto");
 		}
 		
 	}
