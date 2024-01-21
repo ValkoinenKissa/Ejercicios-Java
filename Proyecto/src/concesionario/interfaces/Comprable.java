@@ -4,6 +4,6 @@ public interface Comprable {
 	
 	public void comprarVehiculo();
 	
-	public String calcularPrecioCompra(double impuestos);
+	public String calcularPrecioCompra();
 
 }

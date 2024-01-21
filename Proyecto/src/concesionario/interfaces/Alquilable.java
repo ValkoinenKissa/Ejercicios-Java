@@ -4,6 +4,6 @@ public interface Alquilable {
 	
 	public void alquilarVehiculo();
 	
-	public String calcularAlquiler(double impuestos);
+	public String calcularAlquiler();
 
 }

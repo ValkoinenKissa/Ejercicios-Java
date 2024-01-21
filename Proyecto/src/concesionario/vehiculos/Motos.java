@@ -59,7 +59,8 @@ public class Motos extends Vehiculo implements Alquilable {
 	}
 
 	@Override
-	public String calcularAlquiler(double calculoImpuestos) {
+	public String calcularAlquiler() {
+		double calculoImpuestos = (Globales.IMPUESTO_MOTO * super.getPrecio());
 		double precioAlquiler = (super.getPrecio() * Globales.ALQUILER_MOTO) + calculoImpuestos;
 	    return "El precio de alquiler de la Moto es de: " + Math.floor(precioAlquiler / 12) +"€ /Mes";
 		

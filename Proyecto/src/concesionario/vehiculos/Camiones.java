@@ -34,7 +34,8 @@ public class Camiones extends Vehiculo implements Comprable{
 	}
 
 	@Override
-	public String calcularPrecioCompra(double calculoImpuestos) {
+	public String calcularPrecioCompra() {
+		double calculoImpuestos = (Globales.IMPUESTO_CAMION * super.getPrecio());
 		double precioCompra = super.getPrecio() + calculoImpuestos;
 		return "El precio de compra del camión es de: " + Math.floor(precioCompra) + "€";
 	}

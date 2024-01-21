@@ -63,14 +63,18 @@ public class Coches extends Vehiculo implements Alquilable, Comprable{
 	}
 	
 	@Override
-	public String calcularPrecioCompra(double precioImpuestos) {
-	    double precioFinal = super.getPrecio() + precioImpuestos;
+	public String calcularPrecioCompra() {
+		double calculoImpuestos = motorElectrico ? Globales.IMPUESTO_ELECT : Globales.IMPUESTO_TERMICO;
+		double calcImpuestos = super.getPrecio() * calculoImpuestos;
+	    double precioFinal = super.getPrecio() + calcImpuestos;
 	    return "El precio del Coche + impuestos es de: " + Math.floor(precioFinal) + "€";
 	}
 
 	@Override
-	public String calcularAlquiler(double precioImpuestos) {
-	    double precioAlquiler = (super.getPrecio() * Globales.ALQUILER_COCHE) + precioImpuestos;
+	public String calcularAlquiler() {
+		double calculoImpuestos = motorElectrico ? Globales.IMPUESTO_ELECT : Globales.IMPUESTO_TERMICO;
+		double calcImpuestos = super.getPrecio() * calculoImpuestos;
+	    double precioAlquiler = (super.getPrecio() * Globales.ALQUILER_COCHE) + calcImpuestos;
 	    return "El precio de alquiler del Coche es de: " + Math.floor(precioAlquiler / 12) +"€ /Mes";
 	}
 
