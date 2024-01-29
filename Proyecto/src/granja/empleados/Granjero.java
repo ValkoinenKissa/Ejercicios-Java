@@ -21,7 +21,8 @@ public class Granjero extends Empleado{
 	
 	public void trabajar(Animal animal) {
 		boolean eficiencia;
-		if (especializacion == animal.getNombreEspecie()) {
+		String especieAnimal = animal.getNombreEspecie();
+		if (especializacion.equalsIgnoreCase(especieAnimal)) {
 			eficiencia = true;
 			animal.comer(eficiencia);
 			animal.producir();

@@ -3,17 +3,21 @@ package granja.animales;
 public class Cerdos extends Animal{
 	
 	public Cerdos(String etiqueta) {
-		super(50, etiqueta, Animal.CERDO, 10 );
+		super(50, etiqueta, "Cerdos", 10 );
 		
 	}
 	
-	public void hacerSonido() {
-		System.out.println(this.getEtiqueta() + "OINK");
+	public static void hacerSonido() {
+		System.out.println("OINK");
 	}
 	
 	
 	public void producir() {
-		super.producir("El cerdo no produce nada, solo engorda");
+		hacerSonido();
+		String produccion = "El cerdo no produce nada, solo engorda";
+		System.out.println("El animal" + getEtiqueta() + " tiene un peso de " +  getPeso() + " kg " + " y su salud es " + isMarcadorSalud() + 
+				", el nombre de la especie es: " + getNombreEspecie() + " la cantidad de comida que come es de: " + getDosis_comida() + " kg " +
+				 produccion);
 		
 	}
 
