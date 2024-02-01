@@ -5,9 +5,31 @@ import java.util.Scanner;
 public class Introducir_datos {
 	static Scanner entrada = new Scanner(System.in);
 	public static void main(String[] args) {
-		int[][] matriz = {{1,2,3}, {4, 5, 6}, {7,8,9}};
+		int[][] matriz = {{0,0,0}, {0, 0, 0}, {0,0,0}};
+		boolean stop = false;
 		
-		sumarPosiciones(matriz);
+		while (!stop) {
+			
+			System.out.println("Selecciona S si quieres seguir sumando posiciones, lo contrario pulsa N ");
+			String valor = entrada.nextLine().toUpperCase();			
+			if (valor.equals("N")) {
+				
+				stop = true;
+				
+			}
+			
+			else if(valor.equals("S")) {
+				sumarPosiciones(matriz);
+
+			}
+			
+			else {
+				System.err.println("Por favor introduce una S o una N.");
+			}
+		
+		}
+		
+		System.out.println("Has abandonado el programa correctamente..");
 
 	}
 	
@@ -30,6 +52,9 @@ public class Introducir_datos {
 		
 		System.out.println("Introduce el valor que quieres introducir: ");
 		int newValue = entrada.nextInt();
+		
+		
+	    entrada.nextLine();
 		
 		matriz[selectFila][selectColumn] = newValue + matriz[selectFila][selectColumn];
 		
