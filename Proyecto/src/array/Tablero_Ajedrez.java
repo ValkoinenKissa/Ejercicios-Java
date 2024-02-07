@@ -77,13 +77,13 @@ public class Tablero_Ajedrez {
 			System.out.println("Introduce el peon que quieres mover (0-7)");
 			int posicionY = entrada.nextInt();
 
-			if (posicionX >= 0 && posicionY >= 0) {
+			if (posicionX >= 0 && posicionX < 8 && posicionY >= 0 && posicionY < 8) {
 
 				if (arrayAjedrez[posicionX][posicionY] == 'P') {
-					System.out.println("Introduce a que fila quieres mover el peon (max 2 filas)");
+					System.out.println("Introduce a que fila quieres mover el peon (max 2 filas por movimiento...)");
 					int x = entrada.nextInt();
 					int y = posicionY;
-					if (posicionX < 2 && posicionY < 2) {
+					if (posicionX > 2) {
 						if (arrayAjedrez[x][y] == 'P') {
 							System.out.println("En la posicion introducida hay ya un peon...");
 
