@@ -22,13 +22,17 @@ public class Ejecutable {
 
 		};
 
+		int indiceAleatorio = generadorAleatorios.nextInt(catalogo.length);
+		int indiceUtilizado = indiceAleatorio;
+		while (indiceAleatorio == indiceUtilizado) {
+			indiceAleatorio = generadorAleatorios.nextInt(catalogo.length);
+
+		}
 
 		for (int i = 0; i < 3; i++) {
-			int indiceAleatorio = generadorAleatorios.nextInt(catalogo.length);
-			int indiceUtilizado = indiceAleatorio;
-			System.out.println(catalogo[indiceAleatorio].mostarInformacion());
-			catalogo[indiceAleatorio].encenderDispositivo();
-			catalogo[indiceAleatorio].apagarDispositivo();
+			System.out.println(catalogo[indiceUtilizado].mostarInformacion());
+			catalogo[indiceUtilizado].encenderDispositivo();
+			catalogo[indiceUtilizado].apagarDispositivo();
 
 		}
 
