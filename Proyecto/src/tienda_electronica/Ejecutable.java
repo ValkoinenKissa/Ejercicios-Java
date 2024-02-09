@@ -21,18 +21,30 @@ public class Ejecutable {
 				new Portatil("Apple", "MacBook pro", 1700, false, 1000, "Apple M2")
 
 		};
+		
+		int [] indicesUtilizados = new int [catalogo.length];
+		int cantidadProductos = 0;
 
-		int indiceAleatorio = generadorAleatorios.nextInt(catalogo.length);
-		int indiceUtilizado = indiceAleatorio;
-		while (indiceAleatorio == indiceUtilizado) {
-			indiceAleatorio = generadorAleatorios.nextInt(catalogo.length);
+			while (cantidadProductos < 3) {
+				int indiceAleatorio = generadorAleatorios.nextInt(catalogo.length);
+				
+				boolean yaUtilizado = false;
+				for(int i =0; i< cantidadProductos; i++) {
+					if(indicesUtilizados[i] == indiceAleatorio) {
+						yaUtilizado = true;
+					}
 
-		}
+			}
 
-		for (int i = 0; i < 3; i++) {
-			System.out.println(catalogo[indiceUtilizado].mostarInformacion());
-			catalogo[indiceUtilizado].encenderDispositivo();
-			catalogo[indiceUtilizado].apagarDispositivo();
+			if (!yaUtilizado) {
+				System.out.println(catalogo[indiceAleatorio].mostarInformacion());
+				catalogo[indiceAleatorio].encenderDispositivo();
+				catalogo[indiceAleatorio].apagarDispositivo();
+				System.out.println();
+				indicesUtilizados[cantidadProductos] = indiceAleatorio;
+				cantidadProductos++;
+
+			}
 
 		}
 
