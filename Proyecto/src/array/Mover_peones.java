@@ -10,9 +10,9 @@ public class Mover_peones {
 		char[][] arrayAjedrez = new char[8][8];
 
 		arrayAjedrez = crearAjedrez();
-		
 		moverPeon(arrayAjedrez);
-
+		
+		System.out.println("El juego ha terminado!!");
 	}
 
 	public static char[][] crearAjedrez() {
@@ -40,7 +40,7 @@ public class Mover_peones {
 		return ajedrez;
 	}
 
-	public static void CrearTablero(char[][] arrayAjedrez) {
+	public static void CrearTablero(char[][] arrayAjedrez, int posicionX, int posicionY) {
 		char[] letras = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 		System.out.print("\033[1m  ");
 		for (char letra : letras) {
@@ -51,28 +51,36 @@ public class Mover_peones {
 		for (int i = 0; i < 8; i++) {
 			System.out.print("\033[1m" + (i + 1) + " ");
 			for (int j = 0; j < 8; j++) {
-				System.out.print("\033[0m" + arrayAjedrez[i][j] + " ");
+				if (i == posicionX && j == posicionY) {
+					System.out.print("\033[35m" + arrayAjedrez[i][j] + " "); // Peón seleccionado
+				} else {
+					System.out.print("\033[0m" + arrayAjedrez[i][j] + " ");
+				}
 			}
 			System.out.println();
 		}
 	}
 
 	public static void moverPeon(char[][] arrayAjedrez) {
-		boolean stop = false;
-		CrearTablero(arrayAjedrez);
+		int posicionX = 0;
+		int posicionY = 0;
+		int contadorTurno = 0;
+
+		CrearTablero(arrayAjedrez, -1, -1);
 		System.out.println();
 
-		while (!stop) {
+		while (contadorTurno < 5) {
 
 			System.out.println("Introduce la fila del peon que quieres mover");
-			int posicionX = entrada.nextInt();
+			posicionX = entrada.nextInt() - 1;
 			System.out.println("Introduce el peon que quieres mover (0-7)");
-			int posicionY = entrada.nextInt();
+			posicionY = entrada.nextInt();
+			System.out.println("Esta es la posción que has seleccionado:");
+			CrearTablero(arrayAjedrez, posicionX, posicionY);
 			if (posicionX >= 0 && posicionX < 8 && posicionY >= 0 && posicionY < 8) {
-
 				if (arrayAjedrez[posicionX][posicionY] == 'P') {
 					System.out.println("Introduce a que fila quieres mover el peon (max 2 filas por movimiento...)");
-					int x = entrada.nextInt();
+					int x = entrada.nextInt() - 1;
 					int y = posicionY;
 					if (posicionX <= 8) {
 						if (arrayAjedrez[x][y] == 'P') {
@@ -84,15 +92,16 @@ public class Mover_peones {
 						}
 
 					} else {
-						System.out.println("El número de movimientos que has introducido para el peón son incorrectos");
+						System.err.println("El número de movimientos que has introducido para el peón son incorrectos");
 					}
 				} else {
-					System.out.println("En las posiciones introducidas no hay peones...");
+					System.err.println("En las posiciones introducidas no hay peones...");
 				}
 			} else {
-				System.out.println("Posiciones fuera del rango del tablero.");
+				System.err.println("Posiciones fuera del rango del tablero.");
 			}
-			CrearTablero(arrayAjedrez);
+			CrearTablero(arrayAjedrez, -1, -1);
+			contadorTurno++;
 			System.out.println();
 
 		}
