@@ -3,16 +3,15 @@ package array;
 import java.util.Scanner;
 
 public class Mover_peones {
-	static Scanner entrada = new Scanner(System.in);
-
 	public static void main(String[] args) {
 
 		char[][] arrayAjedrez = new char[8][8];
 
 		arrayAjedrez = crearAjedrez();
 		moverPeon(arrayAjedrez);
-		
+
 		System.out.println("El juego ha terminado!!");
+		
 	}
 
 	public static char[][] crearAjedrez() {
@@ -70,11 +69,12 @@ public class Mover_peones {
 		System.out.println();
 
 		while (contadorTurno < 5) {
-
-			System.out.println("Introduce la fila del peon que quieres mover");
-			posicionX = entrada.nextInt() - 1;
-			System.out.println("Introduce el peon que quieres mover (0-7)");
-			posicionY = entrada.nextInt();
+			Scanner entrada = new Scanner(System.in);
+			System.out.println("Estás en el turno --> " + contadorTurno);
+			System.out.println("Introduce  el peon que quieres mover (a-h) Y la fila donde se encuentra (0-7)");
+			String cordenadas = entrada.nextLine();
+			posicionY = cordenadaAlfabetica(cordenadas);
+			posicionX = cordenadaNumerica(cordenadas);
 			System.out.println("Esta es la posción que has seleccionado:");
 			CrearTablero(arrayAjedrez, posicionX, posicionY);
 			if (posicionX >= 0 && posicionX < 8 && posicionY >= 0 && posicionY < 8) {
@@ -103,8 +103,29 @@ public class Mover_peones {
 			CrearTablero(arrayAjedrez, -1, -1);
 			contadorTurno++;
 			System.out.println();
+			
+			if (contadorTurno == 5){
+				entrada.close();
+			}
 
 		}
-
 	}
+
+	public static int cordenadaAlfabetica(String cordenadas) {
+		if (cordenadas.isEmpty()) {
+
+			return -1;
+		} else {
+			char segundoCaracter = cordenadas.charAt(0);
+			segundoCaracter = Character.toUpperCase(segundoCaracter);
+			return segundoCaracter - 65;
+		}
+	}
+
+	public static int cordenadaNumerica(String cordenadas) {
+		String extraerCordenada = cordenadas.substring(1, 2);
+		int cordenadaExtraida = Integer.parseInt(extraerCordenada);
+		return cordenadaExtraida - 1;
+	}
+
 }
