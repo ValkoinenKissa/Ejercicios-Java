@@ -11,7 +11,7 @@ public class Mover_peones {
 		moverPeon(arrayAjedrez);
 
 		System.out.println("El juego ha terminado!!");
-		
+
 	}
 
 	public static char[][] crearAjedrez() {
@@ -71,40 +71,39 @@ public class Mover_peones {
 		while (contadorTurno < 5) {
 			Scanner entrada = new Scanner(System.in);
 			System.out.println("Estás en el turno --> " + contadorTurno);
-			System.out.println("Introduce  el peon que quieres mover (a-h) Y la fila donde se encuentra (0-7)");
+			System.out.println("Introduce el peon que quieres mover (a-h) Y la fila donde se encuentra (0-7)");
 			String cordenadas = entrada.nextLine();
 			posicionY = cordenadaAlfabetica(cordenadas);
 			posicionX = cordenadaNumerica(cordenadas);
-			System.out.println("Esta es la posción que has seleccionado:");
+			System.out.println("Esta es la posición que has seleccionado:");
 			CrearTablero(arrayAjedrez, posicionX, posicionY);
 			if (posicionX >= 0 && posicionX < 8 && posicionY >= 0 && posicionY < 8) {
 				if (arrayAjedrez[posicionX][posicionY] == 'P') {
-					System.out.println("Introduce a que fila quieres mover el peon (max 2 filas por movimiento...)");
+					System.out.println("Introduce a qué fila quieres mover el peón (max 2 filas por movimiento...)");
 					int x = entrada.nextInt() - 1;
 					int y = posicionY;
-					if (posicionX <= 8) {
+					if (x >= 0 && x < 8 && Math.abs(x - posicionX) <= 2) { // Verificar el movimiento máximo de 2 filas
 						if (arrayAjedrez[x][y] == 'P') {
-							System.out.println("En la posicion introducida hay ya un peon...");
-
+							System.out.println("En la posición introducida hay ya un peón...");
 						} else {
 							arrayAjedrez[x][y] = 'P';
 							arrayAjedrez[posicionX][posicionY] = '*';
 						}
-
 					} else {
-						System.err.println("El número de movimientos que has introducido para el peón son incorrectos");
+						System.out.println(
+								"El número de movimientos que has introducido para el peón es incorrecto o excede el límite de 2 filas.");
 					}
 				} else {
-					System.err.println("En las posiciones introducidas no hay peones...");
+					System.out.println("En las posiciones introducidas no hay peones...");
 				}
 			} else {
-				System.err.println("Posiciones fuera del rango del tablero.");
+				System.out.println("Posiciones fuera del rango del tablero.");
 			}
 			CrearTablero(arrayAjedrez, -1, -1);
 			contadorTurno++;
 			System.out.println();
-			
-			if (contadorTurno == 5){
+
+			if (contadorTurno == 5) {
 				entrada.close();
 			}
 
