@@ -2,7 +2,7 @@ package tres_en_raya.clases;
 
 public class Tablero {
 	private Casilla[][] casillas;
-	private Simbolo turno;
+	private String turno;
 
 	public Tablero() {
 		casillas = new Casilla[3][3];
@@ -19,6 +19,8 @@ public class Tablero {
 		casillas[fila][columna].setSimbolo(turno);
 		turno = turno == Simbolo.X ? Simbolo.O : Simbolo.X;
 	}
+	
+	
 	public void mostrarTablero() {
 	    System.out.print("   ");
 	    for (int i = 0; i < 3; i++) {

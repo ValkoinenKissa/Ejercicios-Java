@@ -3,12 +3,12 @@ package tres_en_raya.clases;
 public class Casilla {
 	private int fila;
 	private int columna;
-	private Simbolo simbolo;
+	private String simbolo;
 	
 	public Casilla(int fila, int columna) {
 		this.fila = fila;
 		this.columna = columna;
-		this.simbolo = Simbolo.V;
+		this.simbolo = Simbolo.VACIO;
 	}
 
 	public int getFila() {
@@ -27,11 +27,11 @@ public class Casilla {
 		this.columna = columna;
 	}
 
-	public Simbolo getSimbolo() {
+	public String getSimbolo() {
 		return simbolo;
 	}
 
-	public void setSimbolo(Simbolo simbolo) {
+	public void setSimbolo(String simbolo) {
 		this.simbolo = simbolo;
 	}
 	
