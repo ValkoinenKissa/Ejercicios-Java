@@ -10,7 +10,7 @@ public class MayorYMenorSencillo {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int num1, num2, num3;
+        int num1, num2, num3, numMenor, numMedio, numMayor;
         System.out.print("Ingrese el primer numero: ");
         num1 = sc.nextInt();
         System.out.print("Ingrese el segundo numero: ");
@@ -18,41 +18,44 @@ public class MayorYMenorSencillo {
         System.out.print("Ingrese el tercer numero: ");
         num3 = sc.nextInt();
 
+        //Estructura para determinar el numero mayor y el menor
 
-        int numMayor, numMenor, numMedio;
-
-
-        if (num1 >= num2 && num1 >= num3) {
+        if (num1 > num2 && num1 > num3) {
             numMayor = num1;
-        } else if (num2 >= num1 && num2 >= num3) {
+        } else if (num2 > num1 && num2 > num3) {
             numMayor = num2;
+
         } else {
             numMayor = num3;
         }
 
-        if (num1 <= num2 && num1 <= num3) {
+        if (num1 < num2 && num1 < num3) {
             numMenor = num1;
-        } else if (num2 <= num1 && num2 <= num3) {
+        } else if (num2 < num1 && num2 < num3) {
             numMenor = num2;
+
         } else {
             numMenor = num3;
         }
 
-        // Determinar el número intermedio
-        if ((num1 != numMayor && num1 != numMenor)) {
+        System.out.println("Mayor: " + numMayor);
+        System.out.println("Menor: " + numMenor);
+
+        //Estructura para imprimir los numeros en orden descendiente
+
+        if (num1 != numMayor && num1 != numMenor) {
             numMedio = num1;
-        } else if ((num2 != numMayor && num2 != numMenor)) {
+        } else if (num2 != numMayor && num2 != numMenor) {
             numMedio = num2;
+
         } else {
             numMedio = num3;
         }
 
-        System.out.println("El numero mayor es: " + numMayor);
-        System.out.println("El numero menor es: " + numMenor);
-
-
-        System.out.println("Los numeros mostrados en orden descendente: " + numMayor + " " + numMedio + " " + numMenor);
-
+        System.out.println("Numeros ordenados en orden descendente: ");
+        System.out.println(numMayor);
+        System.out.println(numMedio);
+        System.out.println(numMenor);
 
     }
 }
