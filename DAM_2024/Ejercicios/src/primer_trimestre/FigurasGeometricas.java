@@ -82,18 +82,13 @@ public class FigurasGeometricas {
                         System.out.println("El perimetro del triangulo es: " + perimetro + " cm");
                         System.out.println();
                         break;
-
-                    default:
-                        System.out.println("Opcion no valida");
-                        break;
-
                 }
             } else if (opcion.equals("SALIR")) {
                 System.out.println("Se ha finalizado el programa");
                 stop = true;
 
             } else {
-                System.out.println("La opción introducida no es valida, por favor revisala");
+                System.err.println("La opción introducida no es valida, por favor revisala");
             }
 
         } while (!stop);
