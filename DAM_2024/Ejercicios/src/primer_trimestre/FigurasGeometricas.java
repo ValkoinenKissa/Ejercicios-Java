@@ -18,8 +18,9 @@ public class FigurasGeometricas {
         boolean stop = false;
         //Bucle do-while siempre se ejecuta al menos una vez para la aparición del menu
         do {
-            System.out.println("Indica la operación que deseas realizar para calcular el area y el perimetro" + " de las siguientes figuras geometricas");
-            System.out.println("No se distinguen entre mayusculas, si quieres abandonar el programa, introduce 'SALIR'");
+            System.out.println("Indica la figura para calcular el área y el perímetro:");
+            System.out.println("Escribe 'SALIR' para finalizar el programa.");
+            System.out.println("Opciones: CUADRADO, RECTANGULO, TRIANGULO, SALIR");
             System.out.println();
             System.out.println("CUADRADO");
             System.out.println("RECTANGULO");
@@ -78,7 +79,7 @@ public class FigurasGeometricas {
                         sc.nextLine();
                         perimetro = ladoA + ladoB + ladoC;
                         System.out.println("El area del triangulo es: " + area + " cm");
-                        System.out.println("El area del triangulo es: " + perimetro + " cm");
+                        System.out.println("El perimetro del triangulo es: " + perimetro + " cm");
                         System.out.println();
                         break;
 
