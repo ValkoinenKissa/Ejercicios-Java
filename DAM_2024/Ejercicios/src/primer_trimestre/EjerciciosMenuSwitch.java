@@ -50,7 +50,6 @@ public class EjerciciosMenuSwitch {
             System.out.println("El numero es impar!!");
         }
         System.out.println();
-        /////////////////////////////////////////////////////////////////////////////////////////////
 
         //Segunda fase del ejercicio (B)
 
@@ -124,8 +123,6 @@ public class EjerciciosMenuSwitch {
                 System.out.println("La categoria del trabajador no exixte");
         }
 
-
-        /////////////////////////////////////////////////////////////////////////////////////////////
 
         //Tercera fase del ejercicio (C)
 
