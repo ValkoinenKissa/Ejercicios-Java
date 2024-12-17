@@ -56,6 +56,8 @@ public class Concesionario_vehiculos {
 
         } while (!opcion.equals("5"));
 
+        sc.close();
+
     }
 
     public static void mostrarVehiculos(String[][] matrizVehiculos) {
