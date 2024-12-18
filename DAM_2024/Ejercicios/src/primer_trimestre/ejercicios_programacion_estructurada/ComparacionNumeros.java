@@ -1,4 +1,4 @@
-package primer_trimestre.ejercicios_basicos;
+package primer_trimestre.ejercicios_programacion_estructurada;
 
 /*
 Dado nos números por teclado, que me muestre cuál es el mayor, menor y si son iguales.

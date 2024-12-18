@@ -1,4 +1,4 @@
-package primer_trimestre.ejercicios_basicos;
+package primer_trimestre.ejercicios_programacion_estructurada;
 
 import java.util.Arrays;
 import java.util.Scanner;

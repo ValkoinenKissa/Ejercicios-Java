@@ -1,4 +1,4 @@
-package primer_trimestre.ejercicios_basicos;
+package primer_trimestre.ejercicios_programacion_estructurada;
 
 /*
 2.- Debes de crear una calculadora. La aplicación mostrará un menú con las operaciones que
