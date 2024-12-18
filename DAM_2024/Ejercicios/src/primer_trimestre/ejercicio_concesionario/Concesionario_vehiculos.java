@@ -307,8 +307,8 @@ public class Concesionario_vehiculos {
         System.out.println("3. Eliminar vehiculo");
         System.out.println("4. Mostrar vehiculos disponibles");
         System.out.println("5. Vender vehiculo");
-        System.out.println("6. Mostrar vehiculos vendidios");
-        System.out.println("7. Mostar todos los vehiculos de un cliente");
+        System.out.println("6. Mostrar vehiculos vendidos");
+        System.out.println("7. Mostar los vehiculos de un cliente");
         System.out.println("8. Salir");
 
         opcion = sc.nextLine();
