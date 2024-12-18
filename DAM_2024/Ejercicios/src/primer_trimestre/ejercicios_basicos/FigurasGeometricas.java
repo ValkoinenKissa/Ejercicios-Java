@@ -1,4 +1,4 @@
-package primer_trimestre;
+package primer_trimestre.ejercicios_basicos;
 
 import java.util.Scanner;
 
