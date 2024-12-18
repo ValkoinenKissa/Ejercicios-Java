@@ -75,6 +75,8 @@ public class Concesionario_vehiculos {
 
     }
 
+    /// //////////////////////////////////////////////////////////////////////////////////
+
     public static void mostrarVehiculosCliente(String[][] matrizVentasVehiculos, Scanner sc) {
         boolean clienteEncontrado = false;
 
@@ -144,7 +146,7 @@ public class Concesionario_vehiculos {
                 matrizVentasVehiculos[indiceVenta][2] = matrizVehiculos[indiceVehiculo][1]; // Marca
                 matrizVentasVehiculos[indiceVenta][3] = matrizVehiculos[indiceVehiculo][2]; // Modelo
 
-                // Paso 4: Eliminar el vehículo vendido de la matriz de vehículos
+                //Eliminar el vehículo vendido de la matriz de vehículos
                 matrizVehiculos[indiceVehiculo][0] = null;
                 matrizVehiculos[indiceVehiculo][1] = null;
                 matrizVehiculos[indiceVehiculo][2] = null;
@@ -269,7 +271,7 @@ public class Concesionario_vehiculos {
                 } else {
 
                     for (int i = 0; i < matrizVehiculos.length; i++) {
-                        if (matrizVehiculos[i][0] == null) { // Encuentra la primera fila vacía
+                        if (matrizVehiculos[i][0] == null) {
                             matrizVehiculos[i][0] = matriculaVehiculo;
 
                             System.out.println("Introduce la marca: ");
