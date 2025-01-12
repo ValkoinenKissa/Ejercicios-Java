@@ -1,4 +1,7 @@
 package segundo_trimestre.ejercicio_biblioteca;
+
+import java.util.Scanner;
+
 /*
 Realiza una aplicación para la gestión de la biblioteca de la Universidad Europea.
 
@@ -25,6 +28,26 @@ Mucha suerte
  */
 public class Biblioteca {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
+    }
+
+    public static int ImprimirMenu(Scanner sc) {
+        System.out.println("Hola empleado. Bienvenido al software de gestión de " +
+                " la biblioteca de la Universidad Europea, estas son las opciones" +
+                " disponibles: ");
+
+        System.out.println("1. Insertar articulo");
+        System.out.println("2. Eliminar articulo");
+        System.out.println("3. Modificar articulo");
+        System.out.println("4. Alquilar articulo");
+        System.out.println("5. Devolución del articulo");
+        System.out.println("6. Salir");
+
+        int opcion = sc.nextInt();
+
+        if (opcion == 1) {}
+
+        return opcion;
     }
 }
