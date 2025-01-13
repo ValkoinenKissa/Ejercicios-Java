@@ -53,14 +53,14 @@ public class Biblioteca {
                     insertarArticulo(sc, matrizArticulos);
                     break;
                 case "2":
-                    System.out.println("Metodo para eliminar articulo");
+                    eliminarDatos(sc, matrizArticulos);
                     break;
 
                 case "3":
-                    System.out.println("Metodo para modificar el artículo");
+                    modificarDatosArticulos(sc, matrizArticulos);
                     break;
                 case "4":
-                    System.out.println("Metodo para efectuar el alquiler");
+                    efectuarAlquiler(sc, matrizClientes, matrizArticulos);
                     break;
                 case "5":
                     System.out.println("Metodo para devolver el artículo");
@@ -132,6 +132,135 @@ public class Biblioteca {
         } else {
             System.out.println("No queda espacio para ingresar mas articulos, elimine un item para dejar espacio: ");
         }
+
+    }
+
+    /// //////////////////////////////////////////////////////////////////////
+
+    public static void insertarCliente(Scanner sc, String[][] matrizClientes) {
+        String idCliente;
+        int indiceCliente, indiceEspacio = comprobarEspacio(matrizClientes);
+
+        if (indiceEspacio != -1) {
+            do {
+                System.out.println("Ingresa el DNI del cliente: ");
+                idCliente = sc.nextLine();
+                indiceCliente = busquedaIdentificador(matrizClientes, idCliente);
+                if (indiceCliente != -1) {
+                    matrizClientes[indiceEspacio][0] = idCliente;
+                    System.out.println("Ingrese el nombre del cliente: ");
+                    matrizClientes[indiceEspacio][1] = sc.nextLine();
+                    return;
+
+                } else {
+                    System.out.println("El DNI del cliente ya existe en el sistema, prueba de nuevo");
+                }
+
+            } while (true);
+        } else {
+            System.out.println("No queda suficiente espacio para añadir mas clientes, por favor " +
+                    " efectua una devolucion: ");
+        }
+    }
+
+    /// /////////////////////////////////////////////////////////////////////
+
+    public static void eliminarDatos(Scanner sc, String[][] matriz) {
+        int indiceBusqueda;
+        String identificador;
+
+        do {
+            System.out.println("Ingresa el identificador del atriculo que desees eliminar: ");
+            identificador = sc.nextLine();
+
+            indiceBusqueda = busquedaIdentificador(matriz, identificador);
+
+            if (indiceBusqueda == -1) {
+                System.out.println("El identificador no corresponde a ningun registrados o" +
+                        " es erroneo, por favor, introducelo de nuevo");
+            } else {
+                System.out.println("¿Estas seguro que quieres eliminar este articulo? (S/N): ");
+                System.out.println(matriz[indiceBusqueda][0]);
+                System.out.println(matriz[indiceBusqueda][1]);
+                System.out.println(matriz[indiceBusqueda][2]);
+                String opcion = sc.nextLine().toUpperCase();
+                if (opcion.equals("S")) {
+                    matriz[indiceBusqueda][0] = null;
+                    matriz[indiceBusqueda][1] = null;
+                    matriz[indiceBusqueda][2] = null;
+
+                } else if (opcion.equals("N")) {
+                    System.out.println("De acuerdo, el articulo no sera eliminado del sistema");
+                } else {
+                    System.out.println("Opcion no valida, por favor, introducelo de nuevo");
+                }
+
+                return;
+
+            }
+
+        } while (true);
+
+    }
+
+    /// //////////////////////////////////////////////////////////////////////
+
+    public static void modificarDatosArticulos(Scanner sc, String[][] matriz) {
+        int indiceBusqueda;
+        String identificador;
+
+        do {
+            System.out.println("Ingresa el identificador del atriculo que desees modificar: ");
+            identificador = sc.nextLine();
+            indiceBusqueda = busquedaIdentificador(matriz, identificador);
+
+            if (indiceBusqueda == -1) {
+                System.out.println("El identificador no corresponde a ningun articulo" +
+                        " o es erroneo, por favor, introducelo de nuevo");
+            } else {
+
+                System.out.println("Ingrese el tipo del articulo: ");
+                matriz[indiceBusqueda][1] = sc.nextLine();
+                System.out.println("Ingrese el nombre del articulo: ");
+                matriz[indiceBusqueda][2] = sc.nextLine();
+                System.out.println();
+                System.out.println("Articulo actualizado correctamente. \n");
+                System.out.print("Mostrando datos actualizados en el sistema...");
+                imprimirMatriz(matriz);
+                return;
+
+            }
+
+
+        } while (true);
+    }
+
+    /// //////////////////////////////////////////////////////////////////////
+
+    public static void efectuarAlquiler(Scanner sc, String[][] matrizClientes, String[][] matrizArticulos) {
+        String identificadorArticulo;
+        int indiceArticulo;
+
+        do {
+            System.out.println("Introduce el identificador del articulo que deseeas alquilar");
+            identificadorArticulo = sc.nextLine();
+            indiceArticulo = busquedaIdentificador(matrizArticulos, identificadorArticulo);
+
+            if (indiceArticulo == -1) {
+                System.out.println("El identificador no corresponde a ningun articulo" +
+                        " o es erroneo, por favor, introducelo de nuevo");
+            }else {
+               System.out.println("Se va a alquilar el siguiente articulo: ");
+               System.out.println(matrizArticulos[indiceArticulo][0]);
+               System.out.println(matrizArticulos[indiceArticulo][1]);
+               System.out.println(matrizArticulos[indiceArticulo][2]);
+               System.out.println("Introduce los datos del cliente al que se le va a prestar el articulo: ");
+               insertarCliente(sc, matrizClientes);
+               System.out.println("¡Alquiler realizado con exito!");
+               return;
+            }
+
+        }while (true);
 
     }
 
