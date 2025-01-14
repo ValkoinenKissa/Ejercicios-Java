@@ -40,6 +40,7 @@ public class Biblioteca {
         //Declaracion de arrays
         String[][] matrizClientes = new String[5][3];
         String[][] matrizArticulos = new String[5][3];
+        String[][] matrizBiblioteca = new String[5][3];
         System.out.println("Hola empleado. Bienvenido al software de gestión de " +
                 " la biblioteca de la Universidad Europea, estas son las opciones disponibles: \n");
         String opcion;
@@ -60,19 +61,19 @@ public class Biblioteca {
                     modificarDatosArticulos(sc, matrizArticulos);
                     break;
                 case "4":
-                    efectuarAlquiler(sc, matrizClientes, matrizArticulos);
+                    efectuarAlquiler(sc, matrizClientes, matrizArticulos, matrizBiblioteca);
                     break;
                 case "5":
-                    System.out.println("Metodo para devolver el artículo");
+                    devolverArticulo(sc, matrizArticulos, matrizClientes, matrizBiblioteca);
                     break;
                 case "6":
-                    System.out.println("Mostrar articulos para el prestamo disponibles");
+                    imprimirMatriz(matrizArticulos);
                     break;
                 case "7":
-                    System.out.println("Mostrar los articulos prestados");
+                    imprimirMatriz(matrizBiblioteca);
                     break;
                 case "8":
-                    System.out.println("Mostrar los préstamos de un cliente en concreto");
+                    mostarArticulosClientes(sc, matrizClientes, matrizArticulos, matrizBiblioteca);
                     break;
                 case "9":
                     System.out.println("Programa finalizado correctamente.");
@@ -137,7 +138,7 @@ public class Biblioteca {
 
     /// //////////////////////////////////////////////////////////////////////
 
-    public static void insertarCliente(Scanner sc, String[][] matrizClientes) {
+    public static void insertarCliente(Scanner sc, String[][] matrizClientes, String idArticulo) {
         String idCliente;
         int indiceCliente, indiceEspacio = comprobarEspacio(matrizClientes);
 
@@ -150,6 +151,7 @@ public class Biblioteca {
                     matrizClientes[indiceEspacio][0] = idCliente;
                     System.out.println("Ingrese el nombre del cliente: ");
                     matrizClientes[indiceEspacio][1] = sc.nextLine();
+                    matrizClientes[indiceEspacio][2] = idArticulo;
                     return;
 
                 } else {
@@ -237,9 +239,9 @@ public class Biblioteca {
 
     /// //////////////////////////////////////////////////////////////////////
 
-    public static void efectuarAlquiler(Scanner sc, String[][] matrizClientes, String[][] matrizArticulos) {
+    public static void efectuarAlquiler(Scanner sc, String[][] matrizClientes, String[][] matrizArticulos, String[][] matrizBiblioteca) {
         String identificadorArticulo;
-        int indiceArticulo;
+        int indiceArticulo, indiceBiblioteca;
 
         do {
             System.out.println("Introduce el identificador del articulo que deseeas alquilar");
@@ -249,20 +251,117 @@ public class Biblioteca {
             if (indiceArticulo == -1) {
                 System.out.println("El identificador no corresponde a ningun articulo" +
                         " o es erroneo, por favor, introducelo de nuevo");
-            }else {
-               System.out.println("Se va a alquilar el siguiente articulo: ");
-               System.out.println(matrizArticulos[indiceArticulo][0]);
-               System.out.println(matrizArticulos[indiceArticulo][1]);
-               System.out.println(matrizArticulos[indiceArticulo][2]);
-               System.out.println("Introduce los datos del cliente al que se le va a prestar el articulo: ");
-               insertarCliente(sc, matrizClientes);
-               System.out.println("¡Alquiler realizado con exito!");
-               return;
+            } else {
+                System.out.println("Se va a alquilar el siguiente articulo: ");
+                System.out.println(matrizArticulos[indiceArticulo][0]);
+                System.out.println(matrizArticulos[indiceArticulo][1]);
+                System.out.println(matrizArticulos[indiceArticulo][2]);
+                System.out.println("Introduce los datos del cliente al que se le va a prestar el articulo: ");
+                insertarCliente(sc, matrizClientes, identificadorArticulo);
+                indiceBiblioteca = comprobarEspacio(matrizBiblioteca);
+                if (indiceBiblioteca == -1) {
+                    System.out.println("No se puede realizar el alquiler");
+                } else {
+                    asociarDatos(matrizArticulos, matrizBiblioteca, indiceArticulo, indiceBiblioteca);
+
+                    System.out.println("¡Alquiler realizado con exito!");
+
+                }
+                return;
             }
 
+        } while (true);
+
+    }
+
+    /// ////////////////////////////////////////////////////////////////////////
+
+    public static void asociarDatos(String[][] matrizArticulos, String[][] matrizBiblioteca, int indiceArticulo, int indiceBiblioteca) {
+        matrizBiblioteca[indiceBiblioteca][0] = matrizArticulos[indiceArticulo][0];
+        matrizBiblioteca[indiceBiblioteca][1] = matrizArticulos[indiceArticulo][1];
+        matrizBiblioteca[indiceBiblioteca][2] = matrizArticulos[indiceArticulo][2];
+        matrizArticulos[indiceArticulo][0] = null;
+        matrizArticulos[indiceArticulo][1] = null;
+        matrizArticulos[indiceArticulo][2] = null;
+    }
+
+    /// ////////////////////////////////////////////////////////////////////
+
+    public static void devolverArticulo(Scanner sc, String[][] matrizArticulos, String[][] matrizClientes, String[][] matrizBiblioteca) {
+        String identificadorArticulo, decision;
+        int indiceArticulo, indiceCliente, indiceBiblioteca;
+
+        do {
+            System.out.println("Introduce el identificador del articulo que deseeas devolver");
+            identificadorArticulo = sc.nextLine();
+            indiceCliente = busquedaCliente(matrizClientes, identificadorArticulo);
+            if (indiceCliente == -1) {
+                System.out.println("El identificador no corresponde a ningun articulo" +
+                        " o es erroneo, por favor, introducelo de nuevo");
+            } else {
+                indiceBiblioteca = busquedaIdentificador(matrizBiblioteca, identificadorArticulo);
+                System.out.println("Se va a devolver el articulo: ");
+                System.out.println(matrizBiblioteca[indiceBiblioteca][0]);
+                System.out.println(matrizBiblioteca[indiceBiblioteca][1]);
+                System.out.println(matrizBiblioteca[indiceBiblioteca][2]);
+
+                System.out.println("El articulo esta asociado al cliente:");
+                System.out.println(matrizClientes[indiceCliente][0]);
+                System.out.println(matrizClientes[indiceCliente][1]);
+
+                System.out.println("Quieres continuar con la devolucion? (S/N)");
+                decision = sc.nextLine().toUpperCase();
+                if (decision.equals("S")) {
+                    indiceArticulo = comprobarEspacio(matrizArticulos);
+                    asociarDatos(matrizBiblioteca, matrizArticulos, indiceBiblioteca, indiceArticulo);
+
+                    System.out.println("El articulo ha sido devuelto correctamente");
+                } else if (decision.equals("N")) {
+                    System.out.println("De acuerdo, no se efectuara la devolucion");
+
+                } else {
+                    System.out.println("Opcion no valida, introducela de nuevo");
+                }
+
+                return;
+
+
+            }
+
+
+        } while (true);
+    }
+
+    /// ///////////////////////////////////////////////////////////////////
+
+    public static void mostarArticulosClientes(Scanner sc, String[][] matrizArticulos, String[][] matrizClientes, String[][] matrizBiblioteca) {
+        String identificadorArticulo, identificadorCliente;
+        int indiceArticulo, indiceCliente;
+
+        do {
+            System.out.println("Introduce el DNI del usuario para mostar todos sus prestamos");
+            identificadorCliente = sc.nextLine();
+            indiceCliente = busquedaCliente(matrizClientes, identificadorCliente);
+            if (indiceCliente == -1) {
+                System.out.println("El cliente no existe, has introducido mal su identificador o no tiene prestamos" +
+                        " a su nombre");
+            }else {
+                identificadorArticulo = matrizClientes[indiceCliente][2];
+                indiceArticulo = busquedaIdentificador(matrizBiblioteca, identificadorArticulo);
+
+                System.out.println("Los articulos alquilados por el cliente con DNI: " +
+                        matrizClientes[indiceCliente][0] + " y nombre " + matrizClientes[indiceCliente][1] + " son: ");
+
+
+                System.out.println(matrizArticulos[indiceArticulo][1]);
+                System.out.println(matrizArticulos[indiceArticulo][2]);
+
+                return;
+            }
         }while (true);
 
     }
+
 
     /// //////////////////////////////////////////////////////////////////////
 
@@ -309,6 +408,16 @@ public class Biblioteca {
     public static int busquedaIdentificador(String[][] matriz, String identificador) {
         for (int i = 0; i < matriz.length; i++) {
             if (matriz[i][0] != null && matriz[i][0].equals(identificador)) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public static int busquedaCliente(String[][] matriz, String identificador) {
+        for (int i = 0; i < matriz.length; i++) {
+            if (matriz[i][2] != null && matriz[i][2].equals(identificador)) {
                 return i;
             }
         }
