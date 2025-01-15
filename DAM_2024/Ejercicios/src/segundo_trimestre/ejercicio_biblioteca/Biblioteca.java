@@ -86,13 +86,15 @@ public class Biblioteca {
 
         } while (!opcion.equals("9"));
 
+        sc.close();
+
     }
 
     /// /////////////////////////////////////////////////////////////////////
 
     public static void insertarArticulo(Scanner sc, String[][] matrizArticulos) {
         int indiceBusqueda, indiceEspacio = comprobarEspacio(matrizArticulos);
-        String idArticulo;
+        String idArticulo, decisionSalida;
 
         System.out.println("Ingresa los detalles del articulo que quieres introducir: \n");
 
@@ -103,7 +105,13 @@ public class Biblioteca {
                 indiceBusqueda = busquedaIdentificador(matrizArticulos, idArticulo);
 
                 if (indiceBusqueda != -1) {
-                    System.out.println("El articulo que estas intentando introducir ya existe en el sistema " + " intentalo de nuevo con otro articulo: ");
+                    System.out.println("El articulo que estas intentando introducir ya existe en el sistema " +
+                            " intentalo de nuevo con otro articulo (o escribe 'SALIR' para volver al menú): ");
+                    decisionSalida = sc.nextLine().toUpperCase();
+                    if (decisionSalida.equals("SALIR")) {
+                        break;
+                    }
+
 
                 } else {
 
@@ -137,7 +145,7 @@ public class Biblioteca {
     /// //////////////////////////////////////////////////////////////////////
 
     public static void insertarCliente(Scanner sc, String[][] matrizClientes, String idArticulo) {
-        String idCliente;
+        String idCliente, decisionSalida;
         int indiceCliente, indiceEspacio = comprobarEspacio(matrizClientes);
 
         if (indiceEspacio != -1) {
@@ -153,7 +161,12 @@ public class Biblioteca {
                     return;
 
                 } else {
-                    System.out.println("El DNI del cliente ya existe en el sistema, prueba de nuevo");
+                    System.out.println("El DNI del cliente ya existe en el sistema, prueba de nuevo " +
+                            " (o escribe 'SALIR' para volver al menú) ");
+                    decisionSalida = sc.nextLine().toUpperCase();
+                    if (decisionSalida.equals("SALIR")) {
+                        break;
+                    }
                 }
 
             } while (true);
@@ -166,7 +179,7 @@ public class Biblioteca {
 
     public static void eliminarDatos(Scanner sc, String[][] matriz) {
         int indiceBusqueda;
-        String identificador;
+        String identificador, decisionSalida;
 
         do {
             System.out.println("Ingresa el identificador del atriculo que desees eliminar: ");
@@ -175,7 +188,14 @@ public class Biblioteca {
             indiceBusqueda = busquedaIdentificador(matriz, identificador);
 
             if (indiceBusqueda == -1) {
-                System.out.println("El identificador no corresponde a ningun registrados o" + " es erroneo, por favor, introducelo de nuevo");
+                System.out.println("El identificador no corresponde a ningun registrados o" +
+                        " es erroneo, por favor, introducelo de nuevo (o escribe 'SALIR' para volver al menú)");
+                decisionSalida = sc.nextLine().toUpperCase();
+                if (decisionSalida.equals("SALIR")) {
+                    break;
+                }
+
+
             } else {
                 System.out.println("¿Estas seguro que quieres eliminar este articulo? (S/N): ");
                 System.out.println(matriz[indiceBusqueda][0]);
@@ -190,7 +210,7 @@ public class Biblioteca {
                 } else if (opcion.equals("N")) {
                     System.out.println("De acuerdo, el articulo no sera eliminado del sistema");
                 } else {
-                    System.out.println("Opcion no valida, por favor, introducelo de nuevo");
+                    System.out.println("Opcion no valida)");
                 }
 
                 return;
@@ -205,7 +225,7 @@ public class Biblioteca {
 
     public static void modificarDatosArticulos(Scanner sc, String[][] matriz) {
         int indiceBusqueda;
-        String identificador;
+        String identificador, decisionSalida;
 
         do {
             System.out.println("Ingresa el identificador del atriculo que desees modificar: ");
@@ -213,7 +233,12 @@ public class Biblioteca {
             indiceBusqueda = busquedaIdentificador(matriz, identificador);
 
             if (indiceBusqueda == -1) {
-                System.out.println("El identificador no corresponde a ningun articulo" + " o es erroneo, por favor, introducelo de nuevo");
+                System.out.println("El identificador no corresponde a ningun articulo" +
+                        " o es erroneo, por favor, introducelo de nuevo (o escribe 'SALIR' para volver al menú)");
+                decisionSalida = sc.nextLine().toUpperCase();
+                if (decisionSalida.equals("SALIR")) {
+                    break;
+                }
             } else {
 
                 System.out.println("Ingrese el tipo del articulo: ");
@@ -235,7 +260,7 @@ public class Biblioteca {
     /// //////////////////////////////////////////////////////////////////////
 
     public static void efectuarAlquiler(Scanner sc, String[][] matrizClientes, String[][] matrizArticulos, String[][] matrizBiblioteca) {
-        String identificadorArticulo;
+        String identificadorArticulo, decisionSalida;
         int indiceArticulo, indiceBiblioteca;
 
         do {
@@ -244,7 +269,12 @@ public class Biblioteca {
             indiceArticulo = busquedaIdentificador(matrizArticulos, identificadorArticulo);
 
             if (indiceArticulo == -1) {
-                System.out.println("El identificador no corresponde a ningun articulo" + " o es erroneo, por favor, introducelo de nuevo");
+                System.out.println("El identificador no corresponde a ningun articulo" +
+                        " o es erroneo, por favor, introducelo de nuevo (o escribe 'SALIR' para volver al menú)");
+                decisionSalida = sc.nextLine().toUpperCase();
+                if (decisionSalida.equals("SALIR")) {
+                    break;
+                }
             } else {
                 System.out.println("Se va a alquilar el siguiente articulo: ");
                 System.out.println(matrizArticulos[indiceArticulo][0]);
@@ -255,6 +285,7 @@ public class Biblioteca {
                 indiceBiblioteca = comprobarEspacio(matrizBiblioteca);
                 if (indiceBiblioteca == -1) {
                     System.out.println("No se puede realizar el alquiler");
+                    break;
                 } else {
                     asociarDatos(matrizArticulos, matrizBiblioteca, indiceArticulo, indiceBiblioteca);
 
@@ -282,7 +313,7 @@ public class Biblioteca {
     /// ////////////////////////////////////////////////////////////////////
 
     public static void devolverArticulo(Scanner sc, String[][] matrizArticulos, String[][] matrizClientes, String[][] matrizBiblioteca) {
-        String identificadorArticulo, decision;
+        String identificadorArticulo, decisionSalida;
         int indiceArticulo, indiceCliente, indiceBiblioteca;
 
         do {
@@ -290,7 +321,12 @@ public class Biblioteca {
             identificadorArticulo = sc.nextLine();
             indiceCliente = busquedaIdentificadorDevolucion(matrizClientes, identificadorArticulo);
             if (indiceCliente == -1) {
-                System.out.println("El identificador no corresponde a ningun articulo" + " o es erroneo, por favor, introducelo de nuevo");
+                System.out.println("El identificador no corresponde a ningun articulo" +
+                        " o es erroneo, por favor, introducelo de nuevo (o escribe 'SALIR' para volver al menu)");
+                decisionSalida = sc.nextLine().toUpperCase();
+                if (decisionSalida.equals("SALIR")) {
+                    break;
+                }
             } else {
                 indiceBiblioteca = busquedaIdentificador(matrizBiblioteca, identificadorArticulo);
                 System.out.println("Se va a devolver el articulo: ");
@@ -303,17 +339,17 @@ public class Biblioteca {
                 System.out.println(matrizClientes[indiceCliente][1]);
 
                 System.out.println("Quieres continuar con la devolucion? (S/N)");
-                decision = sc.nextLine().toUpperCase();
-                if (decision.equals("S")) {
+                decisionSalida = sc.nextLine().toUpperCase();
+                if (decisionSalida.equals("S")) {
                     indiceArticulo = comprobarEspacio(matrizArticulos);
                     asociarDatos(matrizBiblioteca, matrizArticulos, indiceBiblioteca, indiceArticulo);
 
                     matrizClientes[indiceCliente][0] = null;
-                    matrizBiblioteca[indiceCliente][1] = null;
-                    matrizArticulos[indiceCliente][2] = null;
+                    matrizClientes[indiceCliente][1] = null;
+                    matrizClientes[indiceCliente][2] = null;
 
                     System.out.println("El articulo ha sido devuelto correctamente");
-                } else if (decision.equals("N")) {
+                } else if (decisionSalida.equals("N")) {
                     System.out.println("De acuerdo, no se efectuara la devolucion");
 
                 } else {
@@ -332,7 +368,7 @@ public class Biblioteca {
     /// ///////////////////////////////////////////////////////////////////
 
     public static void mostarArticulosClientes(Scanner sc, String[][] matrizClientes, String[][] matrizBiblioteca) {
-        String identificadorArticulo, identificadorCliente, decision;
+        String identificadorArticulo, identificadorCliente, decisionSalida;
         int indiceArticulo, indiceCliente;
 
         do {
@@ -341,14 +377,10 @@ public class Biblioteca {
             indiceCliente = busquedaIdentificador(matrizClientes, identificadorCliente);
             if (indiceCliente == -1) {
                 System.out.println("El cliente no existe, has introducido mal su identificador o no tiene prestamos" + " a su nombre");
-                System.out.println("Quieres intentar introducir el DNI de nuevo? (S/N)");
-                decision = sc.nextLine().toUpperCase();
-                if (decision.equals("N")) {
+                System.out.println("(o escribe 'SALIR' para volver al menu)");
+                decisionSalida = sc.nextLine().toUpperCase();
+                if (decisionSalida.equals("SALIR")) {
                     break;
-                } else if (decision.equals("S")) {
-                    System.out.println("Saliendo al menu principal");
-                } else {
-                    System.out.println("Opcion no valida, introducela de nuevo");
                 }
             } else {
 
