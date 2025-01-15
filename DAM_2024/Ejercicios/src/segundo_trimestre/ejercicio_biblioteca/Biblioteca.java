@@ -424,6 +424,8 @@ public class Biblioteca {
         return -1;
     }
 
+    /// //////////////////////////////////////////////////////////////////
+
     public static int busquedaIdentificadorDevolucion(String[][] matriz, String identificador) {
         for (int i = 0; i < matriz.length; i++) {
             if (matriz[i][2] != null && matriz[i][2].equals(identificador)) {
