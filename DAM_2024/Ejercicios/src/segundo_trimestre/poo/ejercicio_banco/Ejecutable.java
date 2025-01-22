@@ -74,31 +74,13 @@ public class Ejecutable {
     }
 
     /// ///////////////////////////////////////////////////////////////////////
-    public static void comprobarDniCliente(Scanner sc, Cuenta[] listadoCuentas) {
-        boolean stop = true;
-        String decision;
-        String dniCliente = sc.nextLine();
-
-        do {
-            for (Cuenta listadoCuenta : listadoCuentas) {
-                if (listadoCuenta != null && listadoCuenta.getDni().equals(dniCliente)) {
-                    listadoCuenta.setDni(dniCliente);
-                } else {
-                    System.out.println("El dni del cliente introducido ya existe en el sistema. " +
-                            " ¿Quieres intentarlo de nuevo? (S/N)");
-                    decision = sc.nextLine().toUpperCase();
-                    if (decision.equals("S")) {
-                        stop = false;
-                    } else if (decision.equals("N")) {
-                        System.out.println("Volviendo al menu principal...");
-                        stop = true;
-                    } else {
-                        System.out.println("Opción incorrecta, solo puedes introducir (S o N)");
-                        stop = false;
-                    }
-                }
+    public static boolean comprobarDniCliente(Cuenta[] listadoCuentas, String dniCliente) {
+        for (Cuenta listadoCuenta : listadoCuentas) {
+            if (listadoCuenta != null && dniCliente.equals(listadoCuenta.getDni())) {
+                return true; //El dni existe
             }
-        } while (!stop);
+        }
+        return false; //El dni no existe en ninguna de las cuentas actuales
     }
 
     /// ////////////////////////////////////////////////////////////////////////////////////
@@ -124,19 +106,41 @@ public class Ejecutable {
         String dni;
         int indice;
         double saldo;
-            indice = comprobarEspacio(listadoCuentas);
-            if (indice != -1) {
-                dni = introducirDNI(sc);
-                comprobarDniCliente(sc, listadoCuentas);
+        boolean dniEncontrado;
+        String decisionContinuar;
+        indice = comprobarEspacio(listadoCuentas);
+        if (indice != -1) {
+            dni = introducirDNI(sc);
+            dniEncontrado = comprobarDniCliente(listadoCuentas, dni);
+            if (dniEncontrado) {
+                do {
+                    System.out.println("El dni que has introducido esta asociado a un cliente ¿Quieres introducir otro DNI?" +
+                            " (Introduce 'S' para si y 'N' para No)");
+                    decisionContinuar = sc.next().toUpperCase().trim();
+                    if (decisionContinuar.equals("N")) {
+                        System.out.println("Volviendo al menu principal");
+                        return;
+                    } else if (decisionContinuar.equals("S")) {
+                        dni = introducirDNI(sc);
+                        dniEncontrado = comprobarDniCliente(listadoCuentas, dni);
+                    } else {
+                        System.out.println("La opcion introducida es incorrecta (Introduce S o N)");
+                    }
+                } while (dniEncontrado);
+
                 saldo = saldoInicial(sc);
                 listadoCuentas[indice] = new Cuenta(dni, saldo);
                 System.out.println("Cuenta creada correctamente, mostrando detalles a continuación: ");
                 System.out.println(listadoCuentas[indice].toString());
-            }else {
-                System.out.println("No hay suficiente espacio en el sistema para procesar una nueva cuenta");
             }
 
+        } else {
+            System.out.println("No hay suficiente espacio en el sistema para procesar una nueva cuenta");
+        }
+
     }
+
+    /// //////////////////////////////////////////////////////////////////////////
 
     public static double saldoInicial(Scanner sc) {
         double saldo = 0;
@@ -169,21 +173,19 @@ public class Ejecutable {
 
     public static String introducirDNI(Scanner sc) {
         String dni;
-        boolean stop;
+        sc.nextLine();
         do {
-            sc.nextLine();
             System.out.println("Introduzca su DNI (Obligatorio): ");
             dni = sc.nextLine();
 
             if (dni.isEmpty()) {
                 System.out.println("Es campo del DNI esta en blanco, introducelo de nuevo: ");
-                stop = false;
             } else {
-                System.out.println("DNI resgistrado correctamente " + dni);
-                stop = true;
+                System.out.println("El DNI es valido " + dni);
+                break;
             }
 
-        } while (!stop);
+        } while (true);
 
         return dni;
     }
