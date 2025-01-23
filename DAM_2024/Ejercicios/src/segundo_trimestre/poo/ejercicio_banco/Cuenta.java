@@ -25,10 +25,6 @@ public class Cuenta {
         return dni;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
     @Override
     public String toString() {
         return "Cuenta{" +
@@ -40,19 +36,23 @@ public class Cuenta {
     public void ingresar(double saldo) {
         if (saldo < 0) {
             System.out.println("El saldo no puede ser negativo");
-        }else {
-            setSaldoDisponible(saldo);
+        } else {
+            setSaldoDisponible(getSaldoDisponible() + saldo);
+            System.out.println("El saldo se ha ingresado exitosamente, el nuevo balance es:  "
+                    + getSaldoDisponible());
         }
     }
 
     public void retirar(double saldo) {
-        double cantidad = this.saldoDisponible - saldo;
-
-        if (cantidad < 0) {
-            System.out.println("No tienes suficiente saldo para efectuar la operacion");
-        }else {
-            double retirada = getSaldoDisponible() - saldo;
-            setSaldoDisponible(retirada);
+        if (saldo < 0) {
+            System.out.println("La cantidad a retirar no puede ser negativa");
+        } else if (this.saldoDisponible - saldo < 0) {
+            setSaldoDisponible(0);
+            System.out.println("No hay suficiente saldo para efectuar la operacion, el nuevo balance es: 0");
+        } else {
+            setSaldoDisponible(this.saldoDisponible - saldo);
+            System.out.println("El saldo se ha retirado exitosamente, el nuevo balance es: " +
+                    getSaldoDisponible());
 
         }
     }
