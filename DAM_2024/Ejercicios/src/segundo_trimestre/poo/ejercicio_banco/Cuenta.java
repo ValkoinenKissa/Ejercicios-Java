@@ -37,9 +37,9 @@ public class Cuenta {
         if (saldo < 0) {
             System.out.println("El saldo no puede ser negativo");
         } else {
-            setSaldoDisponible(getSaldoDisponible() + saldo);
+            setSaldoDisponible(this.saldoDisponible += saldo);
             System.out.println("El saldo se ha ingresado exitosamente, el nuevo balance es:  "
-                    + getSaldoDisponible());
+                    + this.saldoDisponible);
         }
     }
 
