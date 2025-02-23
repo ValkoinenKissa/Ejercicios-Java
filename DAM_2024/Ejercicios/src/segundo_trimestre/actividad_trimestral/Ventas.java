@@ -59,8 +59,10 @@ public class Ventas {
                     es.mostrarMensaje("El cliente ha comprado los siguientes dispositivos: " + venta);
                 }
             }
-        } else {
+        } else if (clienteValidado) {
             es.mostrarMensaje("El cliente existe en el sistema, pero no ha adquirido ningun dispositivo. ");
+        } else {
+            es.mostrarMensaje("El cliente no existe, prueba a introducirlo de nuevo.");
         }
     }
 
