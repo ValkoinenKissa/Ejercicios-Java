@@ -26,7 +26,7 @@ public class Ejecutable {
         ArrayList<Ventas> listaVentas = new ArrayList<>();
         int opcion;
         do {
-            opcion = menu.mostarMenu();
+            opcion = menu.mostrarMenu();
             switch (opcion) {
                 case 1:
                     t.tramitarAltaTablet(listaTabletas);
@@ -42,8 +42,11 @@ public class Ejecutable {
                     break;
                 case 5:
                     v.mostarVentasCliente(listaVentas, listaClientes);
+                    break;
             }
         } while (opcion != 6);
+
+        System.out.println("Saliendo del programa...");
 
     }
 }

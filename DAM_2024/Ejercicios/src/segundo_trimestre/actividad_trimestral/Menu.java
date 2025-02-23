@@ -23,7 +23,7 @@ public class Menu {
 
 
     //Se muestra menu
-    public int mostarMenu() {
+    public int mostrarMenu() {
         System.out.println("1.- Dar de alta una tablet.");
         System.out.println("2.- Dar de alta un cliente");
         System.out.println("3.- Vender una tablet a un cliente.");
