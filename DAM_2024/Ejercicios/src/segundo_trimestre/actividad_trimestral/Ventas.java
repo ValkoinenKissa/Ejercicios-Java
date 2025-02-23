@@ -58,10 +58,10 @@ public class Ventas {
     /// //////////////////////////////////////////////////////////////////////
 
     protected void mostarVentasCliente(ArrayList<Ventas> listaVentas, ArrayList<Clientes> listaClientes) {
-        int idCliente = es.leerEntero("Introduce el DNI del cliente para mostar las lablets que ha comprado");
+        int idCliente = es.leerEntero("Introduce el DNI del cliente para mostar las lablets que ha comprado: ");
         boolean clienteValidado = validarRegistroClientes(listaClientes, idCliente);
         if (!clienteValidado) {
-            es.mostrarMensaje("El cliente buscado no existe en el sistema, intentalo de nuevo");
+            es.mostrarMensaje("El cliente buscado no existe en el sistema, intentalo de nuevo ");
         }else {
             for (Ventas venta : listaVentas) {
                 if (venta.getIdCliente() == idCliente) {

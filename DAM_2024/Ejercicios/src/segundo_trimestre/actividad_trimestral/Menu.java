@@ -45,8 +45,6 @@ public class Menu {
             }
         } while (opcionNumerica <= 0 || opcionNumerica > 6);
 
-        es.cerrarScanner();
-
         return opcionNumerica;
     }
 }

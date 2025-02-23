@@ -43,10 +43,4 @@ public class EntradaSalida {
         System.out.println(mensaje);
     }
 
-    //Método para cerrar el scanner cuando ya no se use
-    public void cerrarScanner() {
-        entrada.close();
-
-    }
-
 }
