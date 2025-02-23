@@ -45,14 +45,7 @@ public class Ventas {
 
     @Override
     public String toString() {
-        return "Ventas{" +
-                "modelo='" + modelo + '\'' +
-                ", idCliente=" + idCliente +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", idProducto=" + idProducto +
-                ", marca='" + marca + '\'' +
-                '}';
+        return "Ventas{" + "modelo='" + modelo + '\'' + ", idCliente=" + idCliente + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' + ", idProducto=" + idProducto + ", marca='" + marca + '\'' + '}';
     }
 
     /// //////////////////////////////////////////////////////////////////////
@@ -60,39 +53,40 @@ public class Ventas {
     protected void mostarVentasCliente(ArrayList<Ventas> listaVentas, ArrayList<Clientes> listaClientes) {
         int idCliente = es.leerEntero("Introduce el DNI del cliente para mostar las lablets que ha comprado: ");
         boolean clienteValidado = validarRegistroClientes(listaClientes, idCliente);
-        if (!clienteValidado) {
-            es.mostrarMensaje("El cliente buscado no existe en el sistema, intentalo de nuevo ");
-        }else {
+        if (clienteValidado && !listaVentas.isEmpty()) {
             for (Ventas venta : listaVentas) {
                 if (venta.getIdCliente() == idCliente) {
-                    System.out.println("El cliente ha comprado los siguientes dispositivos: " + venta);
+                    es.mostrarMensaje("El cliente ha comprado los siguientes dispositivos: " + venta);
                 }
             }
+        } else {
+            es.mostrarMensaje("El cliente existe en el sistema, pero no ha adquirido ningun dispositivo. ");
         }
     }
 
     /// ///////////////////////////////////////////////////////////////////////
 
     protected void mostrarDispositivosStock(ArrayList<Tablets> listaTablets) {
-        es.mostrarMensaje("Mostrando la lista de dispositivos en stock...");
-       for (Tablets tablet : listaTablets) {
-           if (tablet.isStock()){
-               System.out.println(tablet);
-           }
-       }
+        if (listaTablets.isEmpty()) {
+            es.mostrarMensaje("En este momento no hay stock de ningún dispositivo.");
+        } else {
+            es.mostrarMensaje("Mostrando la lista de dispositivos en stock...");
+            for (Tablets tablet : listaTablets) {
+                if (tablet.isStock()) {
+                    System.out.println(tablet);
+                }
+            }
+        }
     }
 
     /// ////////////////////////////////////////////////////////////////////////
 
-    protected void realizarVentaTablet(ArrayList<Clientes> listaClientes, ArrayList<Tablets> listaTablets,
-                                       ArrayList<Ventas> listaVentas) {
+    protected void realizarVentaTablet(ArrayList<Clientes> listaClientes, ArrayList<Tablets> listaTablets, ArrayList<Ventas> listaVentas) {
         int idCliente, idProducto;
-        es.mostrarMensaje("Bienvenido al modulo para realizar ventas, sigue los que se muestran para realizar la" +
-                " venta.");
+        es.mostrarMensaje("Bienvenido al modulo para realizar ventas, sigue los que se muestran para realizar la" + " venta.");
 
         idProducto = es.leerEntero("Introduce el ID del producto que quieres vender: ");
-        idCliente = es.leerEntero("Introduce el DNI sin la letra de la persona a la que quieres vender el " +
-                " producto: ");
+        idCliente = es.leerEntero("Introduce el DNI sin la letra de la persona a la que quieres vender el " + " producto: ");
 
         if (!validarRegistroClientes(listaClientes, idCliente)) {
             es.mostrarMensaje("El cliente con DNI " + idCliente + " no está registrado.");
@@ -132,8 +126,7 @@ public class Ventas {
 
         //De instancia el objeto venta con los datos obtenidos de la busqueda del ID persona y producto
 
-        Ventas nuevaVenta = new Ventas(tabletSeleccionada.getModelo(), tabletSeleccionada.getMarca(), idProducto,
-                clienteSeleccionado.getApellido(), clienteSeleccionado.getNombre(), idCliente);
+        Ventas nuevaVenta = new Ventas(tabletSeleccionada.getModelo(), tabletSeleccionada.getMarca(), idProducto, clienteSeleccionado.getApellido(), clienteSeleccionado.getNombre(), idCliente);
 
         //La tableta se retira del stock
 
@@ -143,6 +136,8 @@ public class Ventas {
 
         System.out.println("Articulo vendido correctamente, a continuación se muestran los detalles de la venta:");
         System.out.println(nuevaVenta);
+        //Se elimina la tablet de la lista
+        listaTablets.remove(tabletSeleccionada);
 
 
     }
