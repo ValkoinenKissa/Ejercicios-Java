@@ -42,5 +42,19 @@ el resultado final sera de 1000 (300+200+500) para electrodomésticos, 200 para 
 
 
  */
-public class Lavadora {
+public class Lavadora extends Electrodomestico {
+    int carga;
+
+    public Lavadora() {
+    }
+
+    public Lavadora(double precioBase, int peso, int carga) {
+        super(precioBase, peso);
+        this.carga = carga;
+    }
+
+    public Lavadora(int peso, ConsumoEnergetico consumoEnergetico, ColoresDisponibles coloresDisponibles, double precioBase, int carga) {
+        super(peso, consumoEnergetico, coloresDisponibles, precioBase);
+        this.carga = carga;
+    }
 }

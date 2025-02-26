@@ -35,7 +35,7 @@ Entre 20 y 49 kg	50 €
 Entre 50 y 79 kg	80 €
 Mayor que 80 kg	100 €
  */
-public class Electrodomestico {
+public abstract class Electrodomestico {
     //Constantes para valores por defecto
     protected static final int PESO_DEFAULT = 5;
     protected static final ConsumoEnergetico CONSUMO_ENERGETICO_DEFAULT = ConsumoEnergetico.F;
