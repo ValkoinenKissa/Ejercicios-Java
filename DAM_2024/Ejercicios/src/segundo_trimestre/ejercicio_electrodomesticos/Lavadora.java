@@ -26,10 +26,12 @@ Recuerda que las condiciones que hemos visto en la clase Electrodomestico tambi√
  */
 public class Lavadora extends Electrodomestico {
     private static final int CARGA_DEFAULT = 5;
-    private int carga;
+    //Atributo declarado como final para reforzar su inmutabilidad.
+    private final int carga;
 
     protected Lavadora() {
         super();
+        this.carga = CARGA_DEFAULT;
     }
 
     protected Lavadora(double precioBase, int peso) {
@@ -41,9 +43,7 @@ public class Lavadora extends Electrodomestico {
     protected Lavadora(int peso, ConsumoEnergetico consumoEnergetico, ColoresDisponibles coloresDisponibles, double precioBase, int carga) {
         super(peso, consumoEnergetico, coloresDisponibles, precioBase);
         //Al ser un enum y el metodo al requerir un char se realiza un cambio de enum a char
-        char letraConsumo = super.consumoEnergetico.name().charAt(0);
         this.carga = carga;
-        precioFinal(letraConsumo, peso);
     }
 
     protected int getCarga() {
