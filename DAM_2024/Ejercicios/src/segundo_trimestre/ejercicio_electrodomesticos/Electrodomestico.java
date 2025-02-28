@@ -49,17 +49,17 @@ public abstract class Electrodomestico {
     protected double precioBase;
 
     //Declaracion constructores
-    public Electrodomestico() {
+    protected Electrodomestico() {
         this(PESO_DEFAULT, CONSUMO_ENERGETICO_DEFAULT, COLOR_DEFAULT, PRECIO_BASE_DEFAULT);
 
 
     }
 
-    public Electrodomestico(double precioBase, int peso) {
+    protected Electrodomestico(double precioBase, int peso) {
         this(peso, CONSUMO_ENERGETICO_DEFAULT, COLOR_DEFAULT, precioBase);
     }
 
-    public Electrodomestico(int peso, ConsumoEnergetico consumoEnergetico, ColoresDisponibles coloresDisponibles, double precioBase) {
+    protected Electrodomestico(int peso, ConsumoEnergetico consumoEnergetico, ColoresDisponibles coloresDisponibles, double precioBase) {
         this.peso = peso;
         //Metodo para comprobar letra se convierte de enum a char para interactuar con el metodo comprobar letra consumo
         char letraEficiencia = consumoEnergetico.name().charAt(0);
@@ -76,35 +76,35 @@ public abstract class Electrodomestico {
     //Getters & setters
 
 
-    public double getPrecioBase() {
+    protected double getPrecioBase() {
         return precioBase;
     }
 
-    public void setPrecioBase(double precioBase) {
+    protected void setPrecioBase(double precioBase) {
         this.precioBase = precioBase;
     }
 
-    public int getPeso() {
+    protected int getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    protected void setPeso(int peso) {
         this.peso = peso;
     }
 
-    public ConsumoEnergetico getConsumoEnergetico() {
+    protected ConsumoEnergetico getConsumoEnergetico() {
         return consumoEnergetico;
     }
 
-    public void setConsumoEnergetico(ConsumoEnergetico consumoEnergetico) {
+    protected void setConsumoEnergetico(ConsumoEnergetico consumoEnergetico) {
         this.consumoEnergetico = consumoEnergetico;
     }
 
-    public ColoresDisponibles getColoresDisponibles() {
+    protected ColoresDisponibles getColoresDisponibles() {
         return coloresDisponibles;
     }
 
-    public void setColoresDisponibles(ColoresDisponibles coloresDisponibles) {
+    protected void setColoresDisponibles(ColoresDisponibles coloresDisponibles) {
         this.coloresDisponibles = coloresDisponibles;
     }
 
@@ -152,7 +152,7 @@ public abstract class Electrodomestico {
 
     }
 
-    private void precioFinal(char letraConsumo, int pesoElectrodomestico) {
+    protected void precioFinal(char letraConsumo, int pesoElectrodomestico) {
         //Letra precio
 
         switch (letraConsumo) {
