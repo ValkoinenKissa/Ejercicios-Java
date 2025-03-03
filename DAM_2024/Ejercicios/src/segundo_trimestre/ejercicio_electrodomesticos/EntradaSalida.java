@@ -21,7 +21,7 @@ public class EntradaSalida {
         return entrada.nextInt();
     }
 
-    //Método para leer un número decimal
+    //Metodo para leer un número decimal
     public double leerDouble(String mensaje) {
         System.out.print(mensaje);
         while (!entrada.hasNextDouble()) {
@@ -32,13 +32,13 @@ public class EntradaSalida {
         return entrada.nextDouble();
     }
 
-    //Método para leer una cadena de texto
+    //Metodo para leer una cadena de texto
     public String leerTexto(String mensaje) {
         System.out.print(mensaje);
         return entrada.next();
     }
 
-    //Método para mostrar mensajes
+    //Metodo para mostrar mensajes
     public void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
     }
