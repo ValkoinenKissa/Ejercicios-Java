@@ -4,5 +4,5 @@ Los colores disponibles son blanco, negro, rojo, azul y gris. No importa si el n
  */
 public enum ColoresDisponibles {
 
-    blanco, negro, rojo, azul, gris
+    BLANCO, NEGRO, ROJO, AZUL, GRIS
 }

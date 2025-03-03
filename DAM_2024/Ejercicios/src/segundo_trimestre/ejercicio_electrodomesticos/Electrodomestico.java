@@ -39,7 +39,7 @@ public abstract class Electrodomestico {
     //Constantes para valores por defecto
     protected static final int PESO_DEFAULT = 5;
     protected static final ConsumoEnergetico CONSUMO_ENERGETICO_DEFAULT = ConsumoEnergetico.F;
-    protected static final ColoresDisponibles COLOR_DEFAULT = ColoresDisponibles.blanco;
+    protected static final ColoresDisponibles COLOR_DEFAULT = ColoresDisponibles.BLANCO;
     protected static final double PRECIO_BASE_DEFAULT = 100.0;
 
     //Atributos
@@ -47,6 +47,7 @@ public abstract class Electrodomestico {
     protected ConsumoEnergetico consumoEnergetico;
     protected ColoresDisponibles coloresDisponibles;
     protected double precioBase;
+    private static final EntradaSalida es = new EntradaSalida();
 
     //Declaracion constructores
     protected Electrodomestico() {
@@ -190,4 +191,93 @@ public abstract class Electrodomestico {
 
 
     }
+
+    //Validacion color electrodomestico
+
+    protected static ColoresDisponibles validarColorElectrodomestico() {
+        ColoresDisponibles color = null;
+        // Mostrar opciones disponibles
+        System.out.println("Seleccione un color:");
+        for (ColoresDisponibles c : ColoresDisponibles.values()) {
+            System.out.println("- " + c);
+        }
+
+        do {
+
+            /*
+            BLANCO, NEGRO, ROJO, AZUL, GRIS
+             */
+
+            String opcionIntroducida = es.leerTexto("Introduce la color del electrodomestico:").toUpperCase();
+
+            switch (opcionIntroducida) {
+                case "BLANCO":
+                    color = ColoresDisponibles.BLANCO;
+                    break;
+                case "NEGRO":
+                    color = ColoresDisponibles.NEGRO;
+                    break;
+                case "ROJO":
+                    color = ColoresDisponibles.ROJO;
+                    break;
+                case "AZUL":
+                    color = ColoresDisponibles.AZUL;
+                    break;
+                case "GRIS":
+                    color = ColoresDisponibles.GRIS;
+                    break;
+                default:
+                    System.out.println("El color no existe, prueba de nuevo");
+            }
+
+        } while (color == null);
+
+        return color;
+    }
+
+    //Validacion consumos energeticos
+    protected static ConsumoEnergetico validarLetraElectrodomestico() {
+        ConsumoEnergetico consumo = null;
+        // Mostrar opciones disponibles
+        System.out.println("Seleccione un consumo:");
+        for (ConsumoEnergetico c : ConsumoEnergetico.values()) {
+            System.out.println("- " + c);
+        }
+
+        do {
+
+            /*
+            A, B, C, D, E, F
+             */
+
+            String opcionIntroducida = es.leerTexto("Introduce la letra del consumo:").toUpperCase();
+
+            switch (opcionIntroducida) {
+                case "A":
+                    consumo = ConsumoEnergetico.A;
+                    break;
+                case "B":
+                    consumo = ConsumoEnergetico.B;
+                    break;
+                case "C":
+                    consumo = ConsumoEnergetico.C;
+                    break;
+                case "D":
+                    consumo = ConsumoEnergetico.D;
+                    break;
+                case "E":
+                    consumo = ConsumoEnergetico.E;
+                    break;
+                case "F":
+                    consumo = ConsumoEnergetico.F;
+                    break;
+                default:
+                    System.out.println("El color no existe, prueba de nuevo");
+            }
+
+        } while (consumo == null);
+
+        return consumo;
+    }
+
 }
