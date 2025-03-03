@@ -49,4 +49,17 @@ public class EntradaSalida {
         System.out.print(mensaje);
         return entrada.next().charAt(0);
     }
+
+    //Metodo para leer booleanos
+
+    public boolean leerBoolean(String mensaje) {
+        System.out.print(mensaje);
+        while (!entrada.hasNextBoolean()) {
+            System.out.println("Error: Ingresa true o false");
+            entrada.nextBoolean();
+            System.out.print(mensaje);
+        }
+
+        return entrada.nextBoolean();
+    }
 }
