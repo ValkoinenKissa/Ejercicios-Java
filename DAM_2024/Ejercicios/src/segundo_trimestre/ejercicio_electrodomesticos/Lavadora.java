@@ -1,4 +1,5 @@
 package segundo_trimestre.ejercicio_electrodomesticos;
+
 /*
 Crearemos una subclase llamada Lavadora con las siguientes características:
 
@@ -46,18 +47,18 @@ public class Lavadora extends Electrodomestico {
         this.carga = carga;
     }
 
-    protected int getCarga() {
-        return carga;
-    }
-
     @Override
     protected double precioFinal(ConsumoEnergetico letraConsumo, int pesoElectrodomestico) {
-        double precioFinal = this.precioBase;
-        super.precioFinal(letraConsumo, pesoElectrodomestico);
-        if (this.carga > 30){
+        double precioFinal = super.precioFinal(letraConsumo, pesoElectrodomestico);
+        if (this.carga > 30) {
             precioFinal += 50;
         }
 
         return precioFinal;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", carga=" + carga + '}';
     }
 }

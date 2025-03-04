@@ -74,36 +74,12 @@ public abstract class Electrodomestico {
 
     //Getters & setters
 
-    protected double getPrecioBase() {
-        return precioBase;
-    }
-
-    protected void setPrecioBase(double precioBase) {
-        this.precioBase = precioBase;
-    }
-
     protected int getPeso() {
         return peso;
     }
 
-    protected void setPeso(int peso) {
-        this.peso = peso;
-    }
-
     protected ConsumoEnergetico getConsumoEnergetico() {
         return consumoEnergetico;
-    }
-
-    protected void setConsumoEnergetico(ConsumoEnergetico consumoEnergetico) {
-        this.consumoEnergetico = consumoEnergetico;
-    }
-
-    protected ColoresDisponibles getColoresDisponibles() {
-        return coloresDisponibles;
-    }
-
-    protected void setColoresDisponibles(ColoresDisponibles coloresDisponibles) {
-        this.coloresDisponibles = coloresDisponibles;
     }
 
     //Metodo toString
@@ -114,8 +90,7 @@ public abstract class Electrodomestico {
                 "precioBase=" + precioBase +
                 ", coloresDisponibles=" + coloresDisponibles +
                 ", consumoEnergetico=" + consumoEnergetico +
-                ", peso=" + peso +
-                '}';
+                ", peso=" + peso ;
     }
 
     //Metodos propios de la clase:

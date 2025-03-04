@@ -47,8 +47,8 @@ public class Gestion {
 
                 case 2:
                     es.mostrarMensaje("Introduzca los datos de la Lavadora a continuación: ");
-                    precio = es.leerDouble("Introduzca el precio de la Lavadora");
-                    peso = es.leerEntero("Introduzca el peso de la Lavadora");
+                    precio = es.leerDouble("Introduzca el precio de la Lavadora: ");
+                    peso = es.leerEntero("Introduzca el peso de la Lavadora: ");
                     lavadora = new Lavadora(precio, peso);
                     listaElectrodomestico.add(lavadora);
                     System.out.println("Se ha creado correctamente la lavadora, mostrando detalles...");
@@ -56,10 +56,10 @@ public class Gestion {
                     break;
                 case 3:
                     es.mostrarMensaje("Introduzca los datos de la Lavadora a continuación: ");
-                    precio = es.leerDouble("Introduzca el precio de la Lavadora");
+                    precio = es.leerDouble("Introduzca el precio de la Lavadora: ");
                     ColoresDisponibles color = Electrodomestico.validarColorElectrodomestico();
                     ConsumoEnergetico consumo = Electrodomestico.validarLetraElectrodomestico();
-                    peso = es.leerEntero("Introduzca el peso de la Lavadora");
+                    peso = es.leerEntero("Introduzca el peso de la Lavadora: ");
                     carga = es.leerEntero("Introduzca la capacidad de carga de la lavadora:");
                     lavadora = new Lavadora(peso, consumo, color, precio, carga);
                     listaElectrodomestico.add(lavadora);
@@ -92,8 +92,8 @@ public class Gestion {
                     break;
                 case 2:
                     es.mostrarMensaje("Introduzca los datos del televisor a continuación: ");
-                    precio = es.leerDouble("Introduzca el precio del televisor");
-                    peso = es.leerEntero("Introduzca el peso del televisor");
+                    precio = es.leerDouble("Introduzca el precio del televisor: ");
+                    peso = es.leerEntero("Introduzca el peso del televisor: ");
                     televisor = new Television(precio, peso);
                     listaElectrodomestico.add(televisor);
                     System.out.println("Se ha creado correctamente el televisor, mostrando detalles...");
@@ -102,11 +102,11 @@ public class Gestion {
 
                 case 3:
                     es.mostrarMensaje("Introduzca los datos del televisor a continuación: ");
-                    peso = es.leerEntero("Introduzca el peso de la Television");
+                    peso = es.leerEntero("Introduzca el peso de la Television: ");
                     ConsumoEnergetico consumo = Electrodomestico.validarLetraElectrodomestico();
                     ColoresDisponibles color = Electrodomestico.validarColorElectrodomestico();
-                    precio = es.leerDouble("Introduzca el precio del televisor");
-                    resolucionPulgadas = es.leerEntero("Introduzca el resolucion en pulgadas del televisor");
+                    precio = es.leerDouble("Introduzca el precio del televisor: ");
+                    resolucionPulgadas = es.leerEntero("Introduzca el resolucion en pulgadas del televisor: ");
                     incluyeSintonizador = es.leerBoolean("Incluye sintonizador? (Introduce solo true o false)");
                     televisor = new Television(peso, consumo, color, precio, resolucionPulgadas, incluyeSintonizador);
                     listaElectrodomestico.add(televisor);

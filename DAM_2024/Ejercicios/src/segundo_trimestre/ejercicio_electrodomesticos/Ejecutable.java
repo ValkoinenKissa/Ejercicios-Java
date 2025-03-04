@@ -36,7 +36,6 @@ public class Ejecutable {
                 case 4:
                     System.out.println("Saliendo del programa...");
                     break;
-
             }
         } while (opcion != 4);
 

@@ -57,18 +57,9 @@ public class Television extends Electrodomestico {
 
     }
 
-    public int getResolucionEnPulgadas() {
-        return resolucionEnPulgadas;
-    }
-
-    public boolean isIncluyeSintonizador() {
-        return incluyeSintonizador;
-    }
-
     @Override
     protected double precioFinal(ConsumoEnergetico letraConsumo, int pesoElectrodomestico) {
-        super.precioFinal(letraConsumo, pesoElectrodomestico);
-        double precioFinal = this.precioBase;
+        double precioFinal = super.precioFinal(letraConsumo, pesoElectrodomestico);
         if (this.resolucionEnPulgadas > 40) {
             precioFinal += precioFinal * 0.30;
 
@@ -78,5 +69,11 @@ public class Television extends Electrodomestico {
             precioFinal += 50;
         }
         return precioFinal;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "resolucionEnPulgadas=" + resolucionEnPulgadas + ", incluyeSintonizador="
+                + incluyeSintonizador + '}';
     }
 }
