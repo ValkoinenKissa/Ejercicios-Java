@@ -62,20 +62,17 @@ public abstract class Electrodomestico {
 
     protected Electrodomestico(int peso, ConsumoEnergetico consumoEnergetico, ColoresDisponibles coloresDisponibles, double precioBase) {
         this.peso = peso;
-        //Metodo para comprobar letra se convierte de enum a char para interactuar con el metodo comprobar letra consumo
-        char letraEficiencia = consumoEnergetico.name().charAt(0);
-        this.consumoEnergetico = comprobarLetraConsumo(letraEficiencia);
+        this.consumoEnergetico = comprobarLetraConsumo(consumoEnergetico);
         //Metodo para comprobar color se convierte de enum a String para interactuar con el metodo comprobar color
         String colorIntroducido = coloresDisponibles.toString();
         this.coloresDisponibles = comprobarColor(colorIntroducido);
         this.precioBase = precioBase;
 
-        precioFinal(this.consumoEnergetico.name().charAt(0), peso);
+        precioFinal(this.consumoEnergetico, peso);
 
     }
 
     //Getters & setters
-
 
     protected double getPrecioBase() {
         return precioBase;
@@ -124,11 +121,10 @@ public abstract class Electrodomestico {
     //Metodos propios de la clase:
 
 
-    //Metodo comprobar consumo, recibe char de usuario y comprueba que ese char este listado en el enum
-    private ConsumoEnergetico comprobarLetraConsumo(char letraConsumo) {
-        char letraBuscada = Character.toUpperCase(letraConsumo);
+    //Metodo comprobar consumo, recibe enum consumo y comprueba que el mismo este listado en el enum
+    private ConsumoEnergetico comprobarLetraConsumo(ConsumoEnergetico letraConsumo) {
         for (ConsumoEnergetico letrasConsumo : ConsumoEnergetico.values()) {
-            if (letrasConsumo.name().charAt(0) == letraBuscada) {
+            if (letrasConsumo == letraConsumo) {
                 return letrasConsumo;
             }
         }
@@ -153,43 +149,46 @@ public abstract class Electrodomestico {
 
     }
 
-    protected void precioFinal(char letraConsumo, int pesoElectrodomestico) {
+    protected double precioFinal(ConsumoEnergetico letraConsumo, int pesoElectrodomestico) {
         //Letra precio
 
+        double precioFinal = this.precioBase;
+
         switch (letraConsumo) {
-            case 'A':
-                this.precioBase += 100;
+            case ConsumoEnergetico.A:
+                precioFinal += 100;
                 break;
-            case 'B':
-                this.precioBase += 80;
+            case ConsumoEnergetico.B:
+                precioFinal += 80;
                 break;
-            case 'C':
-                this.precioBase += 60;
+            case ConsumoEnergetico.C:
+                precioFinal += 60;
                 break;
-            case 'D':
-                this.precioBase += 50;
+            case ConsumoEnergetico.D:
+                precioFinal += 50;
                 break;
-            case 'E':
-                this.precioBase += 30;
+            case ConsumoEnergetico.E:
+                precioFinal += 30;
                 break;
-            case 'F':
-                this.precioBase += 10;
+            case ConsumoEnergetico.F:
+                precioFinal += 10;
                 break;
         }
 
         //Tamaño precio
 
         if (pesoElectrodomestico > 0 && pesoElectrodomestico <= 19) {
-            this.precioBase += 10;
+            precioFinal += 10;
         } else if (pesoElectrodomestico >= 20 && pesoElectrodomestico <= 49) {
-            this.precioBase += 50;
+            precioFinal += 50;
         } else if (pesoElectrodomestico >= 50 && pesoElectrodomestico <= 79) {
-            this.precioBase += 80;
+            precioFinal += 80;
         } else {
-            this.precioBase += 100;
+            precioFinal += 100;
         }
 
 
+        return precioFinal;
     }
 
     //Validacion color electrodomestico
@@ -272,7 +271,7 @@ public abstract class Electrodomestico {
                     consumo = ConsumoEnergetico.F;
                     break;
                 default:
-                    System.out.println("El color no existe, prueba de nuevo");
+                    System.out.println("La letra no existe, prueba de nuevo");
             }
 
         } while (consumo == null);

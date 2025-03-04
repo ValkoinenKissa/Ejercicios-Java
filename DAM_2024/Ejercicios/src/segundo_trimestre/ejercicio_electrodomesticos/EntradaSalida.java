@@ -43,13 +43,6 @@ public class EntradaSalida {
         System.out.println(mensaje);
     }
 
-    //Metodo para leer caracteres
-
-    public char leerCharacter(String mensaje) {
-        System.out.print(mensaje);
-        return entrada.next().charAt(0);
-    }
-
     //Metodo para leer booleanos
 
     public boolean leerBoolean(String mensaje) {

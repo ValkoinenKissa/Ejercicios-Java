@@ -66,15 +66,17 @@ public class Television extends Electrodomestico {
     }
 
     @Override
-    protected void precioFinal(char letraConsumo, int pesoElectrodomestico) {
+    protected double precioFinal(ConsumoEnergetico letraConsumo, int pesoElectrodomestico) {
         super.precioFinal(letraConsumo, pesoElectrodomestico);
+        double precioFinal = this.precioBase;
         if (this.resolucionEnPulgadas > 40) {
-            this.precioBase += this.precioBase * 0.30;
+            precioFinal += precioFinal * 0.30;
 
         }
 
         if (this.incluyeSintonizador) {
-            this.precioBase += 50;
+            precioFinal += 50;
         }
+        return precioFinal;
     }
 }
