@@ -47,6 +47,12 @@ public abstract class Electrodomestico {
     protected ConsumoEnergetico consumoEnergetico;
     protected ColoresDisponibles coloresDisponibles;
     protected double precioBase;
+    /*
+    Una vez asignado el objeto Scanner en el constructor, la referencia no puede cambiar.
+    Por ello se utiliza final para garantizar que la variable «es» apunte siempre al mismo objeto
+    durante la vida del objeto EntradaSalida, evitando que se re-asigne accidentalmente y
+    asegurando una mayor consistencia y seguridad en la lectura de datos.
+     */
     private static final EntradaSalida es = new EntradaSalida();
 
     //Declaracion constructores
