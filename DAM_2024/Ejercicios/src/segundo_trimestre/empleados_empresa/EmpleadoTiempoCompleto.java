@@ -13,9 +13,6 @@ EmpleadoPorHoras: "Bonos por horas extras trabajadas".
  */
 public class EmpleadoTiempoCompleto extends Empleado implements Beneficios {
 
-    public EmpleadoTiempoCompleto() {
-    }
-
     public EmpleadoTiempoCompleto(String nombre, double salarioBase) {
         super(nombre, salarioBase);
     }
@@ -33,7 +30,7 @@ public class EmpleadoTiempoCompleto extends Empleado implements Beneficios {
     }
 
     @Override
-    protected String mostrarInformacion() {
+    public String mostrarInformacion() {
         return super.mostrarInformacion();
     }
 }

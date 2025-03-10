@@ -26,7 +26,7 @@ public class Ejecutable {
                     g.crearEmpleadoPorHoras(empleados);
                     break;
                 case 3:
-                    System.out.println("3.- Mostrar informacion de cada empleado.");
+                    g.mostrarInfoFinalEmpleados(empleados);
                     break;
                 case 4:
                     System.out.println("Saliendo de la aplicacion");

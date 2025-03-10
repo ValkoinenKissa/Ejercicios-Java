@@ -12,32 +12,14 @@ EmpleadoPorHoras: "Bonos por horas extras trabajadas".
 
  */
 public class EmpleadoPorHoras extends Empleado implements Beneficios {
-    private int horasTrabajadas;
-    private double tarifaPorHora;
+    //CYa que no se utilizan los getters y setters de estos atributos, se han hecho final para evitar su manipulacion
+    private final int horasTrabajadas;
+    private final double tarifaPorHora;
 
-
-    public EmpleadoPorHoras() {
-    }
 
     public EmpleadoPorHoras(String nombre, double salarioBase, int horasTrabajadas, double tarifaPorHora) {
         super(nombre, salarioBase);
         this.horasTrabajadas = horasTrabajadas;
-        this.tarifaPorHora = tarifaPorHora;
-    }
-
-    protected int getHorasTrabajadas() {
-        return horasTrabajadas;
-    }
-
-    protected void setHorasTrabajadas(int horasTrabajadas) {
-        this.horasTrabajadas = horasTrabajadas;
-    }
-
-    protected double getTarifaPorHora() {
-        return tarifaPorHora;
-    }
-
-    protected void setTarifaPorHora(double tarifaPorHora) {
         this.tarifaPorHora = tarifaPorHora;
     }
 
@@ -53,7 +35,7 @@ public class EmpleadoPorHoras extends Empleado implements Beneficios {
     }
 
     @Override
-    protected String mostrarInformacion() {
+    public String mostrarInformacion() {
         return super.mostrarInformacion() + " EmpleadoPorHoras{" +
                 "horasTrabajadas=" + horasTrabajadas +
                 ", tarifaPorHora=" + tarifaPorHora +

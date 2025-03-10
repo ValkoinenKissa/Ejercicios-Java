@@ -43,16 +43,9 @@ public class EntradaSalida {
         System.out.println(mensaje);
     }
 
-    //Metodo para leer booleanos
+    //Metodo para limpiar buffer de escaner
 
-    public boolean leerBoolean(String mensaje) {
-        System.out.print(mensaje);
-        while (!entrada.hasNextBoolean()) {
-            System.out.println("Error: Ingresa true o false");
-            entrada.nextBoolean();
-            System.out.print(mensaje);
-        }
-
-        return entrada.nextBoolean();
+    public void limpiarEscaner(){
+        entrada.nextLine();
     }
 }

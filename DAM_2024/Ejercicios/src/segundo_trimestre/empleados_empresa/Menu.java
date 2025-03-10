@@ -1,9 +1,7 @@
 package segundo_trimestre.empleados_empresa;
 
-import segundo_trimestre.ejercicio_electrodomesticos.EntradaSalida;
-
 public class Menu {
-    private final segundo_trimestre.ejercicio_electrodomesticos.EntradaSalida es;
+    private final EntradaSalida es;
 
     public Menu() {
         this.es = new EntradaSalida();
@@ -27,7 +25,7 @@ public class Menu {
         do {
             opcionNumerica = es.leerEntero("Introduce la opción que deseas ejecutar: ");
             if (opcionNumerica <= 0 || opcionNumerica > 4) {
-                System.out.println("Introduce una opcion entre 1 y 4.");
+                System.out.println("Introduce una opcion entre (1 y 4).");
             }
         } while (opcionNumerica <= 0 || opcionNumerica > 4);
 
