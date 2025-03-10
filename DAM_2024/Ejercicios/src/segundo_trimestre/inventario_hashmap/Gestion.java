@@ -25,6 +25,7 @@ public class Gestion {
         int stock;
         idProducto = obtenerIdUnico(listaProductos);
         nombreProducto = es.leerTexto("Ingrese el nombre del producto que quieres añadir: ");
+        es.limpiarEscaner();
         precio = es.leerDouble("Ingrese el precio del producto: ");
         stock = validarCantidadStock();
         p = new Producto(nombreProducto, precio, stock);
@@ -41,6 +42,8 @@ public class Gestion {
             Producto p = listaProductos.get(idProductoBuscado);
             System.out.println(p);
 
+        }else {
+            es.mostrarMensaje("El ID del producto no existe");
         }
 
     }
@@ -53,6 +56,8 @@ public class Gestion {
             //Llamada manual al recolector de basura para eliminar cualquier referencia al objeto Producto,
             // el cual pertenece el id
             System.gc();
+        }else {
+            es.mostrarMensaje("El ID del producto no existe");
         }
     }
 
@@ -64,7 +69,14 @@ public class Gestion {
     }
 
     protected void actualizarStock(Map<String, Producto> listaProductos) {
-
+        String idProductoBuscado = es.leerTexto("Ingrese el id del producto que quiere actualizar: ");
+        if (comprobarExixtenciaID(listaProductos, idProductoBuscado)) {
+            Producto p = listaProductos.get(idProductoBuscado);
+            int nuevoStock = es.leerEntero("Ingrese el nuevo stock del producto: ");
+            p.setStock(nuevoStock);
+        }else {
+            es.mostrarMensaje("El ID del producto no existe");
+        }
     }
 
     private String obtenerIdUnico(Map<String, Producto> listaProductos) {
@@ -92,10 +104,8 @@ public class Gestion {
             }
 
 
-        } while (stock >= 0);
+        } while (stock <= 0);
 
         return stock;
     }
-
-
 }

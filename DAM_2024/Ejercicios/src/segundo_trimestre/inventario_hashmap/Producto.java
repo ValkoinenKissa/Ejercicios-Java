@@ -14,9 +14,6 @@ public class Producto {
     private double precio;
     private int stock;
 
-    public Producto() {
-    }
-
     public Producto(String nombre, double precio, int stock) {
         this.nombre = nombre;
         this.precio = precio;
@@ -29,10 +26,6 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public int getStock() {
-        return stock;
     }
 
     public void setStock(int stock) {
