@@ -7,7 +7,7 @@ En la clase Main, crea un array de empleados y almacena objetos de ambos tipos (
 Recorre el array e imprime la información de cada empleado, utilizando polimorfismo.
  */
 public class Gestion {
-    final EntradaSalida es = new EntradaSalida();
+    private final EntradaSalida es = new EntradaSalida();
 
     protected void crearEmpleadoTiempoCompleto(List<Empleado> listaEmpleados) {
         String nombre;
