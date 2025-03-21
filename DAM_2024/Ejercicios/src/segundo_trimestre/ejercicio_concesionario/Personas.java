@@ -16,8 +16,6 @@ public abstract class Personas {
     private String nombre;
     private String apellidos;
 
-    public Personas() {
-    }
 
     public Personas(String dni, String apellidos, String nombre) {
         this.dni = dni;
@@ -54,8 +52,7 @@ public abstract class Personas {
         return "Personas{" +
                 "dni='" + dni + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                '}';
+                ", apellidos='" + apellidos + '\'';
     }
 
 }

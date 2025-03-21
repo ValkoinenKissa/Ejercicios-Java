@@ -34,5 +34,9 @@ public class EntradaSalida {
         return entrada.nextDouble();
     }
 
+    public void limpiarEscaner() {
+        entrada.nextLine();
+    }
+
 
 }

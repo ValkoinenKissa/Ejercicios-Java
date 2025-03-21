@@ -12,24 +12,14 @@ Se desea guardar también la fecha en la que se repara cada vehículo
 y el número de horas que se ha tardado en arreglar cada automóvil.
  */
 public class Mecanicos extends Personas {
-    private String fechaContratacion;
+    private final String fechaContratacion;
     private double salario;
 
-    public Mecanicos() {
-    }
 
     public Mecanicos(String dni, String apellidos, String nombre, String fechaContratacion, double salario) {
         super(dni, apellidos, nombre);
         this.fechaContratacion = fechaContratacion;
         this.salario = salario;
-    }
-
-    public String getFechaContratacion() {
-        return fechaContratacion;
-    }
-
-    public void setFechaContratacion(String fechaContratacion) {
-        this.fechaContratacion = fechaContratacion;
     }
 
     public double getSalario() {
@@ -42,7 +32,7 @@ public class Mecanicos extends Personas {
 
     @Override
     public String toString() {
-        return super.toString() + "Mecanicos{" +
+        return super.toString()  +
                 "fechaContratacion='" + fechaContratacion + '\'' +
                 ", salario=" + salario +
                 '}';

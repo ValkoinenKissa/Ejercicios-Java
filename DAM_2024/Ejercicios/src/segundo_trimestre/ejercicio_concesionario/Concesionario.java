@@ -21,7 +21,7 @@ Se desea guardar también la fecha en la que se repara cada vehículo
 y el número de horas que se ha tardado en arreglar cada automóvil.
  */
 public class Concesionario {
-    protected List<Clientes> fichaClientes = new ArrayList<>();
+    protected List<Personas> fichaClientes = new ArrayList<>();
     protected List<CochesNuevos> fichaVehiculosNuevos = new ArrayList<>();
     protected List<CochesUsados> fichaVehiculosUsados = new ArrayList<>();
     private final EntradaSalida es;
@@ -82,22 +82,24 @@ public class Concesionario {
         CochesNuevos cochesNuevos;
         String matricula, color, modelo, marca;
         int stock;
-        System.out.println("Introduce los datos del vehiculo: ");
+        System.out.println("Introduce los datos del vehiculo");
+        System.out.println();
         matricula = es.leerTexto("Introduce el matricula del vehiculo: ");
+        marca = es.leerTexto("Introduce la marca: ");
         color = es.leerTexto("Introduce el color del vehiculo: ");
         modelo = es.leerTexto("Introduce el modelo del vehiculo: ");
-        marca = es.leerTexto("Introduce la marca: ");
         stock = es.leerEntero("Introduce el stock actual de este modelo: ");
         cochesNuevos = new CochesNuevos(matricula, color, marca, modelo, stock);
         fichaVehiculosNuevos.add(cochesNuevos);
         System.out.println("Vehiculo creado correctamente, mostrando datos: " + cochesNuevos);
+        es.limpiarEscaner();
     }
 
     protected void agregarVehiculoViejo() {
         CochesUsados cochesUsados;
         String matricula, color, modelo, marca;
         int numKilometros;
-        System.out.println("Introduce los datos del vehiculo: ");
+        System.out.println("Introduce los datos del vehiculo");
         System.out.println();
         matricula = es.leerTexto("Introduce el matricula del vehiculo: ");
         color = es.leerTexto("Introduce el color del vehiculo: ");
@@ -107,6 +109,7 @@ public class Concesionario {
         cochesUsados = new CochesUsados(matricula, color, modelo, marca, numKilometros);
         fichaVehiculosUsados.add(cochesUsados);
         System.out.println("Vehiculo creado correctamente, mostrando datos: " + cochesUsados);
+        es.limpiarEscaner();
 
     }
 
@@ -129,10 +132,15 @@ public class Concesionario {
         String matriculaVehiculoSeleccionado;
         matriculaVehiculoSeleccionado = mostrarVehiculosaCliente();
         System.out.println();
-        recogerDatosCliente(matriculaVehiculoSeleccionado);
+        if (buscarVehiculo(matriculaVehiculoSeleccionado)) {
+            recogerDatosCliente(matriculaVehiculoSeleccionado);
+            System.out.println("Venta realizada correctamente");
+        } else {
+            System.out.println("La matricula introducida no existe, intenta de nuevo");
+        }
     }
 
-    private boolean buscarVehiculo(String matricula) {
+    protected boolean buscarVehiculo(String matricula) {
 
         for (CochesNuevos cochesNuevos : fichaVehiculosNuevos) {
             if (cochesNuevos.getMatricula().equals(matricula)) {
@@ -149,7 +157,7 @@ public class Concesionario {
     }
 
     private boolean buscarCliente(String dniCliente) {
-        for (Clientes clientes : fichaClientes) {
+        for (Personas clientes : fichaClientes) {
             if (clientes.getDni().equals(dniCliente)) {
                 return true;
             }
@@ -158,9 +166,13 @@ public class Concesionario {
         return false;
     }
 
-    protected void mostarClientesConsecionario(){
-        for (Clientes clientes : fichaClientes){
-            System.out.println(clientes);
+    protected void mostarClientesConsecionario() {
+        if (!fichaClientes.isEmpty()) {
+            for (Personas clientes : fichaClientes) {
+                System.out.println(clientes);
+            }
+        } else {
+            System.out.println("No hay clientes disponibles para mostrar.");
         }
     }
 }

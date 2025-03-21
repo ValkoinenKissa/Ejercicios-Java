@@ -11,13 +11,11 @@ De los coches nuevos interesa saber el número de unidades que hay en el concesi
 De los coches viejos interesa el número de kilómetros que lleva recorridos.
  */
 public abstract class Vehiculos {
-    private String matricula;
+    private final String matricula;
     private String marca;
     private String modelo;
     private String color;
 
-    public Vehiculos() {
-    }
 
     public Vehiculos(String matricula, String color, String marca, String modelo) {
         this.matricula = matricula;
@@ -28,10 +26,6 @@ public abstract class Vehiculos {
 
     public String getMatricula() {
         return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
     }
 
     public String getColor() {
@@ -64,7 +58,6 @@ public abstract class Vehiculos {
                 "matricula='" + matricula + '\'' +
                 ", marca='" + marca + '\'' +
                 ", modelo='" + modelo + '\'' +
-                ", color='" + color + '\'' +
-                '}';
+                ", color='" + color + '\'';
     }
 }

@@ -10,18 +10,16 @@ Se desea guardar también la fecha en la que se repara cada vehículo
 y el número de horas que se ha tardado en arreglar cada automóvil.
  */
 public class Taller {
-    private final EntradaSalida es;
-    private ArrayList<Personas> fichaMecanicos = new ArrayList<>();
-    private Concesionario concesionario;
-    private ArrayList<String> listaReparaciones = new ArrayList<>();
+    private final EntradaSalida es = new EntradaSalida();
+    private final ArrayList<Personas> fichaMecanicos = new ArrayList<>();
+    private final ArrayList<Reparaciones> listaReparaciones = new ArrayList<>();
+    private final Concesionario concesionario;
 
-
-    public Taller() {
-        this.es = new EntradaSalida();
+    public Taller(Concesionario concesionario) {
+        this.concesionario = concesionario;
     }
 
-
-    private void darDeAltaMecanicos() {
+    protected void darDeAltaMecanicos() {
         String dni, nombre, apellidos, fechaContratacion;
         double salario;
         System.out.println("A continuación, introduce los datos del nuevo mecanico que quieres dar de alta: ");
@@ -38,14 +36,42 @@ public class Taller {
         mecanico = new Mecanicos(dni, apellidos, nombre, fechaContratacion, salario);
         fichaMecanicos.add(mecanico);
         System.out.println("Se ha registrado correctamente al mecanico, mostrando sus datos: " + mecanico);
+        es.limpiarEscaner();
 
     }
 
     protected void realizarReparacion() {
-        String matriculaSeleccionada;
+        Reparaciones reparacion;
+        String matriculaSeleccionada, dniMecanicos, fechaReparacion;
+        int horasEmpleadas;
+        ArrayList<String> dniMecanicosInvolucrados = new ArrayList<>();
         System.out.println("Introuce la matricula del vehiculo a reparar, se mostraran todos los clientes: ");
-        concesionario = new Concesionario();
         concesionario.mostarClientesConsecionario();
+
+        matriculaSeleccionada = es.leerTexto("Introduce la matricula del vehiculo: ");
+        if (concesionario.buscarVehiculo(matriculaSeleccionada)) {
+            System.out.println("A continuación se mostrara los mecanicos disponibles para realizar la reparacion: ");
+            mostrarMecanicos();
+            while (true) {
+                dniMecanicos = es.leerTexto("Introduce el DNI de los mecanicos que realizaran la reparacion: ");
+                dniMecanicosInvolucrados.add(dniMecanicos);
+                String decision = es.leerTexto("¿Quieres seguir introduciedo mecanicos? (S/N): ").toUpperCase();
+                if (decision.equals("N")) {
+                    break;
+                }
+            }
+
+            fechaReparacion = es.leerTexto("Introduce la fecha de reparacion (dd/mm/yyyy): ");
+            horasEmpleadas = es.leerEntero("Introduce las horas empleadas en la reparacion del vehiculo");
+            reparacion = new Reparaciones(matriculaSeleccionada, horasEmpleadas, fechaReparacion, dniMecanicosInvolucrados);
+            listaReparaciones.add(reparacion);
+            System.out.println("Los datos de la reparación han sido almacenados correctamente: ");
+            es.limpiarEscaner();
+
+
+        } else {
+            System.out.println("El vehiculo introducido no se encuentra registrado, prueba de nuevo");
+        }
 
 
     }
@@ -70,6 +96,17 @@ public class Taller {
         }
 
         return false;
+    }
+
+    protected void mostarReparaciones() {
+        System.out.println("Mostrando lista de reparaciones: ");
+        if (!listaReparaciones.isEmpty()) {
+            for (Reparaciones reparacion : listaReparaciones) {
+                System.out.println(reparacion);
+            }
+        }else {
+            System.out.println("No hay reparaciones disponibles.");
+        }
     }
 
 

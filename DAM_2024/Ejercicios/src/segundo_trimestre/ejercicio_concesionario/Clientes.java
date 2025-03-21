@@ -12,13 +12,9 @@ Se desea guardar también la fecha en la que se repara cada vehículo
 y el número de horas que se ha tardado en arreglar cada automóvil.
  */
 public class Clientes extends Personas {
-    private String direccion;
-    private String telefono;
-    private String matriculaVehiculoComprado;
-
-
-    public Clientes() {
-    }
+    private final String direccion;
+    private final String telefono;
+    private final String matriculaVehiculoComprado;
 
     public Clientes(String dni, String apellidos, String nombre, String direccion, String telefono, String matriculaVehiculoComprado) {
         super(dni, apellidos, nombre);
@@ -27,34 +23,12 @@ public class Clientes extends Personas {
         this.matriculaVehiculoComprado = matriculaVehiculoComprado;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public void getMatriculaVehiculoComprado() {
-    }
-
-    public void setMatriculaVehiculoComprado(String matriculaVehiculoComprado) {
-        this.matriculaVehiculoComprado = matriculaVehiculoComprado;
-    }
-
     @Override
     public String toString() {
-        return super.toString() + "Clientes{" +
+        return super.toString() +
                 "direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
+                ", matriculaVehiculoComprado='" + matriculaVehiculoComprado + '\'' +
                 '}';
     }
 }

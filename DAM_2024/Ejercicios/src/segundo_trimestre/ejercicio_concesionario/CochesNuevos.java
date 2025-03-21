@@ -6,28 +6,16 @@ De los coches nuevos interesa saber el número de unidades que hay en el concesi
 De los coches viejos interesa el número de kilómetros que lleva recorridos.
  */
 public class CochesNuevos extends Vehiculos {
-    private int numCochesEnConcesionario;
-
-
-    public CochesNuevos() {
-    }
+    private final int numCochesEnConcesionario;
 
     public CochesNuevos(String matricula, String color, String marca, String modelo, int numCochesEnConcesionario) {
         super(matricula, color, marca, modelo);
         this.numCochesEnConcesionario = numCochesEnConcesionario;
     }
 
-    public int getNumCochesEnConcesionario() {
-        return numCochesEnConcesionario;
-    }
-
-    public void setNumCochesEnConcesionario(int numCochesEnConcesionario) {
-        this.numCochesEnConcesionario = numCochesEnConcesionario;
-    }
-
     @Override
     public String toString() {
-        return super.toString() + "CochesNuevos{" +
+        return super.toString() +
                 "numCochesEnConcesionario=" + numCochesEnConcesionario +
                 '}';
     }
