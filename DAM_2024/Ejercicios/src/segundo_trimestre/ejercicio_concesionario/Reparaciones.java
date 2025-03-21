@@ -11,7 +11,7 @@ y el número de horas que se ha tardado en arreglar cada automóvil.
  */
 public class Reparaciones {
     private final String matriculaAReparar;
-    private ArrayList<String> dniMecanicosInvolucrados = new ArrayList<>();
+    private final ArrayList<String> dniMecanicosInvolucrados;
     private final String fechaReparacion;
     int numHorasReparacion;
 
