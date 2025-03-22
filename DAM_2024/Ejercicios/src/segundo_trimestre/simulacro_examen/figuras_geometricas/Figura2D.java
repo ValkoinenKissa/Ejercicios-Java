@@ -16,8 +16,6 @@ calcularPerímetro(). (0,25 puntos).
 public abstract class Figura2D implements FiguraGeometrica{
     private String nombreFigura;
 
-    public Figura2D() {
-    }
 
     public Figura2D(String nombreFigura) {
         this.nombreFigura = nombreFigura;
