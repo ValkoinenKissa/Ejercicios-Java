@@ -1,4 +1,4 @@
-package tercer_trimestre.ficheros_pruebas;
+package tercer_trimestre.ficheros_pruebas.clase_file;
 
 import java.io.File;
 import java.util.Scanner;
