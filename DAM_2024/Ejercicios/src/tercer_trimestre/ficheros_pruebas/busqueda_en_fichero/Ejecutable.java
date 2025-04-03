@@ -45,6 +45,7 @@ public class Ejecutable {
                 }
 
             } catch (FileNotFoundException e) {
+
                 System.out.println("No se ha podido realizar la lectura del archivo");
             }
 
