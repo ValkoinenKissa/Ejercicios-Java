@@ -1,5 +1,5 @@
 package tercer_trimestre.actividad_trimestral;
-/**
+/*
  * Desarrollar una aplicación que permita administrar cuentas de usuario en una red social.
 
  * Requisitos:
