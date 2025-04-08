@@ -42,4 +42,37 @@ public class Menu {
         System.out.println("6-. Salir");
 
     }
+
+    protected void imprimirMenuTipoCuenta() {
+        System.out.println("1-. Crear una cuenta estandar");
+        System.out.println("2-. Crear una cuenta premium");
+        System.out.println("3-. Comparar funciones de la cuenta estandar y la cuenta premium");
+    }
+
+    protected void menuCuentaPremium() {
+        System.out.println("\uD83C\uDD93 Funcionalidades para Cuenta Básica:");
+        System.out.println("1-. Publicar mensajes de texto simples.");
+        System.out.println("2-. Actualizar perfil (email y teléfono).");
+        System.out.println("3-. Límite de 5 publicaciones por día.");
+        System.out.println("4-. Tamaño de 100 caracteres por mensaje");
+        System.out.println("5-. Sin opción de personalizar el perfil más allá de datos básicos.");
+    }
+
+    protected void menuCuentaFree() {
+        System.out.println("\uD83D\uDC8E Funcionalidades para Cuenta Premium");
+        System.out.println("1-. Publicar sin límite de mensajes por día.");
+        System.out.println("2-. Permite mensajes largos y enriquecidos");
+        System.out.println("3-.Personalización avanzada del perfil");
+        System.out.println("Tamaño de 500 caracteres por mensaje");
+
+    }
+
+    //String nombreUsuario, String email, int telefono, int edad
+
+    protected void actualizarPerfil() {
+        System.out.println("1.- Actualizar el email asocidado a la cuenta");
+        System.out.println("2.- Actualizar el num de telefono asocidado a la cuenta");
+        System.out.println("3.- Salir del menu");
+
+    }
 }

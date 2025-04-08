@@ -1,10 +1,11 @@
 package tercer_trimestre.actividad_trimestral;
 
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /*
  * Desarrollar una aplicación que permita administrar cuentas de usuario en una red social.
@@ -35,14 +36,63 @@ import java.nio.file.Paths;
  *      - Leer y mostrar la información de los usuarios.
  */
 public class LecturaEscrituraFichero {
-    Path rutaFichero = Paths.get("actividad_trimestral\\datos_usuarios.txt");
+
+    public LecturaEscrituraFichero() {
+    }
 
     private void crearFichero(Path rutaFichero) throws IOException {
+        //Se verifica la existencia del fichero
         if (!Files.exists(rutaFichero)) {
             Files.createFile(rutaFichero);
             System.out.println("El fichero " + rutaFichero + " ha sido creado correctamente.");
-        }else {
+        } else {
             System.out.println("El fichero " + rutaFichero + " ya existe");
         }
+    }
+
+
+    protected void escribirFichero(Path rutaFichero, String mensaje) {
+        //Se invoca al metodo de creaccion de fichero
+
+
+        //Try-with-resources no es necesario cerrar el fujo de datos explicitamente
+
+        try (FileWriter fw = new FileWriter(rutaFichero.toFile())) {
+            fw.write(mensaje);
+
+        } catch (IOException e) {
+            System.out.println("Error al almacenar los datos: " + e.getMessage());
+        }
+    }
+
+
+    protected void leerFichero(Path rutaFichero) {
+        if (Files.exists(rutaFichero)) {
+            try (BufferedReader br = new BufferedReader(new FileReader(rutaFichero.toFile()))) {
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    System.out.println(linea);
+                }
+            } catch (IOException e) {
+                System.out.println("Error al leer el fichero: " + e.getMessage());
+            }
+        }
+    }
+
+    protected boolean buscarEnFichero(Path rutaFichero, String nombreUsuario) {
+        if (Files.exists(rutaFichero)) {
+            try (BufferedReader br = new BufferedReader(new FileReader(rutaFichero.toFile()))) {
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    if (linea.equals(nombreUsuario)) {
+                        return true;
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println("Error al leer el fichero: " + e.getMessage());
+            }
+        }
+
+        return false;
     }
 }
