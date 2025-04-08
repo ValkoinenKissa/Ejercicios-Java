@@ -36,7 +36,6 @@ import java.time.format.DateTimeFormatter;
 public class CuentaBasica extends CuentaUsuario implements OperacionesCuenta {
     //Atributos de clase definidos como final, ya que carecen de metodos getter and setter y ademas se evita el cambio accidental de los mismos
     private final LecturaEscrituraFichero lecturaEscritura = new LecturaEscrituraFichero();
-    private final Path rutaFicheroDatos = Paths.get("actividad_trimestral\\ficheros\\datos_usuarios.txt");
     private final Path rutaFicheroMensajes = Paths.get("actividad_trimestral\\ficheros\\mensajes_usuarios.txt");
 
     public CuentaBasica() {
@@ -72,7 +71,7 @@ public class CuentaBasica extends CuentaUsuario implements OperacionesCuenta {
         String fechaFormateada = fechaYHora.format(formato);
         //Se imprime junto al mensaje
         String fechaYmensaje = fechaFormateada + " " + mensaje;
-        lecturaEscritura.escribirFichero(rutaFicheroDatos, fechaYmensaje);
+        lecturaEscritura.escribirFichero(rutaFicheroMensajes, fechaYmensaje);
 
     }
 }

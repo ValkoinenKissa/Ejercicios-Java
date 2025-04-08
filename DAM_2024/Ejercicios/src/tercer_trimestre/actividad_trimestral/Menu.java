@@ -47,9 +47,10 @@ public class Menu {
         System.out.println("1-. Crear una cuenta estandar");
         System.out.println("2-. Crear una cuenta premium");
         System.out.println("3-. Comparar funciones de la cuenta estandar y la cuenta premium");
+        System.out.println("4-. Salir");
     }
 
-    protected void menuCuentaPremium() {
+    protected void opcionesCuentaPremium() {
         System.out.println("\uD83C\uDD93 Funcionalidades para Cuenta Básica:");
         System.out.println("1-. Publicar mensajes de texto simples.");
         System.out.println("2-. Actualizar perfil (email y teléfono).");
@@ -58,7 +59,7 @@ public class Menu {
         System.out.println("5-. Sin opción de personalizar el perfil más allá de datos básicos.");
     }
 
-    protected void menuCuentaFree() {
+    protected void opcionesCuentaFree() {
         System.out.println("\uD83D\uDC8E Funcionalidades para Cuenta Premium");
         System.out.println("1-. Publicar sin límite de mensajes por día.");
         System.out.println("2-. Permite mensajes largos y enriquecidos");
