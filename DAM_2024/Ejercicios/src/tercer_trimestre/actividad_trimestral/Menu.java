@@ -36,9 +36,9 @@ public class Menu {
     protected void imprimirMenu() {
         System.out.println("1-. Crear una nueva cuenta");
         System.out.println("2-. Actualizar el perfil");
-        System.out.println("4-. Publicar un mensaje");
-        System.out.println("5-. Ver mensajes publicados");
-        System.out.println("6-. Salir");
+        System.out.println("3-. Publicar un mensaje");
+        System.out.println("4-. Ver mensajes publicados");
+        System.out.println("5-. Salir");
 
     }
 
@@ -46,7 +46,7 @@ public class Menu {
         System.out.println("1-. Crear una cuenta estandar");
         System.out.println("2-. Crear una cuenta premium");
         System.out.println("3-. Comparar funciones de la cuenta estandar y la cuenta premium");
-        System.out.println("4-. Salir");
+        System.out.println("4-. Salir del menu de creaccion de cuentas");
     }
 
     protected void opcionesCuentaPremium() {

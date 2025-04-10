@@ -1,7 +1,4 @@
 package tercer_trimestre.actividad_trimestral;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -34,15 +31,14 @@ import java.time.format.DateTimeFormatter;
  * - Leer y mostrar la información de los usuarios.
  */
 public class CuentaBasica extends CuentaUsuario implements OperacionesCuenta {
-    //Atributos de clase definidos como final, ya que carecen de metodos getter and setter y ademas se evita el cambio accidental de los mismos
-    private final LecturaEscrituraFichero lecturaEscritura = new LecturaEscrituraFichero();
-    private final Path rutaFicheroMensajes = Paths.get("actividad_trimestral\\ficheros\\mensajes_usuarios.txt");
+    private int contadorPublicaciones;
 
-    public CuentaBasica() {
+    public CuentaBasica(String nombreUsuario, String email, String telefono, int edad) {
+        super(nombreUsuario, email, telefono, edad);
     }
 
-    public CuentaBasica(String nombreUsuario, String email, int telefono, int edad) {
-        super(nombreUsuario, email, telefono, edad);
+    public int getContadorPublicaciones() {
+        return contadorPublicaciones;
     }
 
     //String nombreUsuario, String email, int telefono, int edad
@@ -53,7 +49,7 @@ public class CuentaBasica extends CuentaUsuario implements OperacionesCuenta {
     }
 
     @Override
-    public void actualizarPerfil(String email, int numTelefono) {
+    public void actualizarPerfil(String email, String numTelefono) {
       super.setEmail(email);
       super.setTelefono(numTelefono);
       System.out.println("Perfil actualizado exitosamente: ");
@@ -62,7 +58,9 @@ public class CuentaBasica extends CuentaUsuario implements OperacionesCuenta {
 
 
     @Override
-    public void publicarMensaje(String mensaje) {
+    public String publicarMensaje(String mensaje) {
+        //Se consume una publicacion
+        contadorPublicaciones++;
         //Se obtiene la fecha y hora a traves del metodo LocalDateTime.now
         LocalDateTime fechaYHora = LocalDateTime.now();
         //Se configura el formato que tiene que tener la fecha
@@ -70,8 +68,7 @@ public class CuentaBasica extends CuentaUsuario implements OperacionesCuenta {
         //Se aplica el formato
         String fechaFormateada = fechaYHora.format(formato);
         //Se imprime junto al mensaje
-        String fechaYmensaje = fechaFormateada + " " + mensaje;
-        lecturaEscritura.escribirFichero(rutaFicheroMensajes, fechaYmensaje);
+        return fechaFormateada + " Mensaje --> " + mensaje;
 
     }
 }

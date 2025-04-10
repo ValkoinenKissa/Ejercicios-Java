@@ -51,9 +51,10 @@ public class LecturaEscrituraFichero {
     }
 
 
-    protected void escribirFichero(Path rutaFichero, String mensaje) {
+    protected void escribirFichero(Path rutaFichero, String mensaje) throws IOException {
         //Se invoca al metodo de creaccion de fichero
 
+        crearFichero(rutaFichero);
 
         //Try-with-resources no es necesario cerrar el fujo de datos explicitamente
 

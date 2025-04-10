@@ -29,7 +29,7 @@ package tercer_trimestre.actividad_trimestral;
  */
 public interface OperacionesCuenta {
 
-    void actualizarPerfil(String email, int numTelefono);
+    void actualizarPerfil(String email, String numTelefono);
 
-    void publicarMensaje(String mensaje);
+    String publicarMensaje(String mensaje);
 }

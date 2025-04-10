@@ -1,4 +1,7 @@
 package tercer_trimestre.actividad_trimestral;
+
+import java.util.ArrayList;
+
 /*
  * Desarrollar una aplicación que permita administrar cuentas de usuario en una red social.
 
@@ -29,6 +32,40 @@ package tercer_trimestre.actividad_trimestral;
  */
 public class Ejecutable {
     public static void main(String[] args) {
+        ArrayList<CuentaUsuario> listaCuentas = new ArrayList<>();
+        Menu menu = new Menu();
+        EntradaSalida es = new EntradaSalida();
+        Gestion g = new Gestion();
+        int opcion;
+        System.out.println("Bienvenido a la red social, ¿Que deseeas hacer?");
+        System.out.println();
+        do {
+            menu.imprimirMenu();
+            System.out.println();
+            opcion = es.leerEntero("Elije la opcion: ");
+            switch (opcion) {
+                case 1:
+                    g.crearCuenta(listaCuentas);
+                    break;
+                case 2:
+                    g.actualizarPerfil(listaCuentas);
+                    break;
+                case 3:
+                    g.publicarMensaje(listaCuentas);
+                    break;
+                case 4:
+                    g.verMensajesPublicados();
+                    break;
+                case 5:
+                    System.out.println("Abandonando la aplicacion");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
+            }
+
+        } while (opcion != 5);
+
 
     }
 }

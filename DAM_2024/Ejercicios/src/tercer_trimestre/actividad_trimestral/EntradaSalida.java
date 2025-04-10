@@ -9,6 +9,7 @@ public class EntradaSalida {
         this.entrada = new Scanner(System.in);
     }
 
+
     public int leerEntero(String mensaje) {
         System.out.print(mensaje);
         while (!entrada.hasNextInt()) {
@@ -36,9 +37,19 @@ public class EntradaSalida {
         return entrada.next();
     }
 
+    public String leerCadenaTexto(String mensaje) {
+        System.out.print(mensaje);
+        return entrada.nextLine();
+    }
+
     //Metodo para mostrar mensajes
     public void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
+    }
+
+    public void limpiarEntrada() {
+        entrada.nextLine();
+
     }
 
 }
