@@ -28,7 +28,6 @@ package tercer_trimestre.actividad_trimestral;
  *      - Leer y mostrar la información de los usuarios.
  */
 public class Menu {
-    private final EntradaSalida es = new EntradaSalida();
 
     public Menu() {
     }
@@ -64,15 +63,6 @@ public class Menu {
         System.out.println("2-. Permite mensajes largos y enriquecidos");
         System.out.println("3-.Personalización avanzada del perfil");
         System.out.println("Tamaño de 500 caracteres por mensaje");
-
-    }
-
-    //String nombreUsuario, String email, int telefono, int edad
-
-    protected void actualizarPerfil() {
-        System.out.println("1.- Actualizar el email asocidado a la cuenta");
-        System.out.println("2.- Actualizar el num de telefono asocidado a la cuenta");
-        System.out.println("3.- Salir del menu");
 
     }
 }
