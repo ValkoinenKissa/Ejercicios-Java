@@ -37,7 +37,8 @@ public class Menu {
         System.out.println("2-. Actualizar el perfil");
         System.out.println("3-. Publicar un mensaje");
         System.out.println("4-. Ver mensajes publicados");
-        System.out.println("5-. Salir");
+        System.out.println("5-. Visualizar la informacion sobre todos los usuarios");
+        System.out.println("6-. Salir");
 
     }
 

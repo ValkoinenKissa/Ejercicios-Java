@@ -66,5 +66,5 @@ public abstract class CuentaUsuario {
     }
 
     //Metodos abstractos
-    abstract void mostrarInformacion();
+    protected abstract String mostrarInformacion();
 }

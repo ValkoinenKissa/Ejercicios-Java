@@ -57,6 +57,9 @@ public class Ejecutable {
                     g.verMensajesPublicados();
                     break;
                 case 5:
+                    g.verDatosUsuarios();
+                    break;
+                case 6:
                     System.out.println("Abandonando la aplicacion");
                     break;
                 default:
@@ -64,7 +67,7 @@ public class Ejecutable {
                     break;
             }
 
-        } while (opcion != 5);
+        } while (opcion != 6);
 
 
     }

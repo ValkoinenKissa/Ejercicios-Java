@@ -35,7 +35,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Gestion {
-    //Atributos de clase definidos como final, ya que carecen de metodos getter and setter y ademas se evita el cambio accidental de los mismos
+    //Atributos de clase definidos como final, ya que carecen de metodos getter and setter y además se evita el cambio accidental de los mismos
     private final EntradaSalida es = new EntradaSalida();
     private final LecturaEscrituraFichero lecturaEscritura = new LecturaEscrituraFichero();
     private final Path rutaFicheroMensajes = Paths.get("actividad_trimestral\\ficheros\\mensajes_usuarios.txt");
@@ -51,8 +51,9 @@ public class Gestion {
         //Se eliminan los datos de la ejecucion anterior del programa (si es que existen)
         try {
             Files.deleteIfExists(rutaFicheroMensajes);
+            Files.deleteIfExists(rutaFicheroDatos);
         } catch (IOException e) {
-            System.out.println("No se puede eliminar el fichero de mensajes de la ejecucion anterior: " + e.getMessage());
+            System.out.println("No se han podido eliminar los ficheros de mensajes de la ejecucion anterior: " + e.getMessage());
         }
     }
 
@@ -75,6 +76,9 @@ public class Gestion {
                     break;
                 case 4:
                     System.out.println("Abandonando el menu...");
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
             }
 
         } while (opcion != 4);
@@ -83,7 +87,7 @@ public class Gestion {
 
     protected void actualizarPerfil(ArrayList<CuentaUsuario> cuentas) {
         String nombreUsuario;
-        String email, telefono;
+        String nuevoEmail, nuevoTelefono, antiguoEmail, antiguoTelefono;
         nombreUsuario = es.leerTexto("Introduce tu nombre de usuario para localizar tu cuenta: ");
         //Utilizacion de polimorfismo, la variable de tipo CuentaUsuario almacena la instancia, sea de cuentaBasica o premium
         CuentaUsuario cuentaLocalizada = buscarCuenta(cuentas, nombreUsuario);
@@ -92,16 +96,27 @@ public class Gestion {
             return;
         }
         try {
-            email = es.leerTexto("Introduce el nuevo email de tu cuenta: ");
-            telefono = es.leerTexto("Introduce el nuevo telefono de tu cuenta: ");
-            if (comprobarTelefono(telefono)) {
+            nuevoEmail = es.leerTexto("Introduce el nuevo email de tu cuenta: ");
+            nuevoTelefono = es.leerTexto("Introduce el nuevo telefono de tu cuenta: ");
+            antiguoEmail = cuentaLocalizada.getEmail();
+            antiguoTelefono = cuentaLocalizada.getTelefono();
+            if (comprobarTelefono(nuevoTelefono)) {
                 System.out.println("El telefono es correcto.");
             }
             /*Si la instancia localizada implementa la interfaz operacionesCuenta, se utiliza una pattern variable
              * para asi evitar el casting manual y llamar al metodo desde esta nueva variable cuentaOperable */
             if (cuentaLocalizada instanceof OperacionesCuenta cuentaOperable) {
-                cuentaOperable.actualizarPerfil(email, telefono);
-                System.out.println("El usuario se ha actualizado correctamente.");
+                cuentaOperable.actualizarPerfil(nuevoEmail, nuevoTelefono);
+                try {
+                    System.out.println("El usuario se ha actualizado correctamente.");
+                    //Se ejecuta el metodo para actualizar los datos del fichero
+                    lecturaEscritura.actualizarEntradaFichero(rutaFicheroDatos, nombreUsuario, antiguoEmail,
+                            nuevoEmail, antiguoTelefono, nuevoTelefono);
+                } catch (IOException e) {
+                    System.err.println("No se ha podido sobreescribir los datos actualizados en el fichero: "
+                            + e.getMessage());
+                }
+
             }
 
         } catch (TelefonoInvalido e) {
@@ -179,6 +194,15 @@ public class Gestion {
 
     }
 
+    protected void verDatosUsuarios(){
+        if (Files.exists(rutaFicheroDatos)) {
+            System.out.println("Mostrando todos los datos almacenados sobre los usuarios: ");
+            lecturaEscritura.leerFichero(rutaFicheroDatos);
+        } else {
+            System.out.println("Todavia no hay datos de usuarios");
+        }
+    }
+
     private void crearCuentaPremium(ArrayList<CuentaUsuario> cuentas) {
         CuentaPremium cuentaPremium;
         String nombreUsuario, email, biografia, telefono;
@@ -192,6 +216,7 @@ public class Gestion {
 
             } else {
                 email = es.leerTexto("Introduce el email: ");
+                es.limpiarEntrada();
                 biografia = es.leerCadenaTexto("Introduce la biografia de tu perfil: ");
                 telefono = es.leerTexto("Ingresa tu numero de telefono: ");
                 if (comprobarTelefono(telefono)) {
@@ -204,6 +229,7 @@ public class Gestion {
 
                 cuentaPremium = new CuentaPremium(nombreUsuario, email, telefono, edad, biografia);
                 cuentas.add(cuentaPremium);
+                lecturaEscritura.escribirFichero(rutaFicheroDatos, cuentaPremium.mostrarInformacion());
                 System.out.println("Cuenta creada correctamente");
             }
 
@@ -212,6 +238,8 @@ public class Gestion {
             System.err.println("Telefono invalido " + e.getMessage());
         } catch (EdadInvalida e) {
             System.err.println("Edad invalida " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Error al guardar los datos en el fichero: " + e.getMessage());
         }
     }
 
@@ -238,6 +266,7 @@ public class Gestion {
 
                 cuentaFree = new CuentaBasica(nombreUsuario, email, telefono, edad);
                 cuentas.add(cuentaFree);
+                lecturaEscritura.escribirFichero(rutaFicheroDatos, cuentaFree.mostrarInformacion());
                 System.out.println("Cuenta creada correctamente");
             }
 
@@ -246,6 +275,8 @@ public class Gestion {
             System.err.println("Telefono invalido " + e.getMessage());
         } catch (EdadInvalida e) {
             System.err.println("Edad invalida " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Error al guardar los datos en el fichero: " + e.getMessage());
         }
 
 

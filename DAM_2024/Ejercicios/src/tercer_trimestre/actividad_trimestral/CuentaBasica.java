@@ -43,9 +43,9 @@ public class CuentaBasica extends CuentaUsuario implements OperacionesCuenta {
 
     //String nombreUsuario, String email, int telefono, int edad
     @Override
-    void mostrarInformacion() {
-        System.out.println("Usuario: " + super.getNombreUsuario() + " | Email: " + super.getEmail() + " | Telefono: "
-                + super.getTelefono() + " | Edad: " + super.getEdad());
+    protected String mostrarInformacion() {
+        return "Usuario: " + super.getNombreUsuario() + " | Email: " + super.getEmail() + " | Telefono: "
+                + super.getTelefono() + " | Edad: " + super.getEdad();
     }
 
     @Override

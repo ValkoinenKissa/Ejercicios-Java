@@ -1,9 +1,7 @@
 package tercer_trimestre.actividad_trimestral;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -57,7 +55,7 @@ public class LecturaEscrituraFichero {
         //Try-with-resources no es necesario cerrar el fujo de datos explicitamente
         //parametro true para sobreescribir el fichero
         try (FileWriter fw = new FileWriter(rutaFichero.toFile(), true)) {
-            //Retrono de carro y salto de linea dentro del fichero
+            //Retrono de carro y salto de línea dentro del fichero
             fw.write(mensaje + "\r\n");
         } catch (IOException e) {
             System.out.println("Error al almacenar los datos: " + e.getMessage());
@@ -80,10 +78,10 @@ public class LecturaEscrituraFichero {
 
     protected boolean buscarEnFichero(Path rutaFichero, String nombreUsuario) {
         if (Files.exists(rutaFichero)) {
-            try (BufferedReader br = new BufferedReader(new FileReader(rutaFichero.toFile()))) {
-                String linea;
-                while ((linea = br.readLine()) != null) {
-                    if (linea.equals(nombreUsuario)) {
+            try {
+                String contenido = Files.readString(rutaFichero);
+                for (String linea : contenido.split("\n")) {
+                    if (linea.contains(nombreUsuario)) {
                         return true;
                     }
                 }
@@ -94,4 +92,27 @@ public class LecturaEscrituraFichero {
 
         return false;
     }
+
+    protected void actualizarEntradaFichero(Path rutaFichero, String nomUsuario, String mailAntiguo, String mailActualizado
+            , String numAntiguo, String numNuevo) throws IOException {
+        if (buscarEnFichero(rutaFichero, nomUsuario)) {
+            //Metodo de la clase file para leer el fichero entero y almacenarlo en una variable string
+            String contenido = Files.readString(rutaFichero);
+            //Aplicamos los metodos replace
+            contenido = contenido.replace(mailAntiguo, mailActualizado).replace(numAntiguo, numNuevo);
+
+            //Borramos el fichero
+            Files.deleteIfExists(rutaFichero);
+
+            //Lo creamos de nuevo
+
+            Files.createFile(rutaFichero);
+
+            //Y volvemos a escribir el archivo con el nuevo contenido
+            Files.writeString(rutaFichero, contenido, StandardCharsets.UTF_8);
+
+
+        }
+    }
+
 }
