@@ -29,6 +29,7 @@ package tercer_trimestre.actividad_trimestral;
  */
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -47,6 +48,12 @@ public class Gestion {
     protected static final short LIMITE_CARACTERES_MENSAJE_MENSAJE_PREMIUM = 500;
 
     public Gestion() {
+        //Se eliminan los datos de la ejecucion anterior del programa (si es que existen)
+        try {
+            Files.deleteIfExists(rutaFicheroMensajes);
+        } catch (IOException e) {
+            System.out.println("No se puede eliminar el fichero de mensajes de la ejecucion anterior: " + e.getMessage());
+        }
     }
 
     protected void crearCuenta(ArrayList<CuentaUsuario> listaCuentas) {
@@ -110,6 +117,7 @@ public class Gestion {
 
         if (cuentaLocalizada == null) {
             System.out.println("No existe ninguna cuenta asociada al nombre de usuario: " + nombreUsuario);
+            es.limpiarEntrada();
             return;
         }
 
@@ -118,16 +126,19 @@ public class Gestion {
             mensaje = es.leerCadenaTexto("Introduce el mensaje que quieres publicar:");
             if (mensaje.length() > LIMITE_CARACTERES_MENSAJE_FREE) {
                 System.out.println("El mensaje contiene mas de los 100 carcateres permitidos para las cuentas free.");
+                es.limpiarEntrada();
                 return;
             } else {
                 try {
                     mensajeTimeStampUsuario = cuentaOperable.publicarMensaje(mensaje);
                     if (cuentaOperable.getContadorPublicaciones() < LIMITE_PUBLICACIONES_FREE) {
-                        publicacionFinal = "Usuario --> " + nombreUsuario + " Fecha del mensaje --> " + mensajeTimeStampUsuario;
+                        publicacionFinal = "Usuario --> " + nombreUsuario + " | Fecha del mensaje --> " + mensajeTimeStampUsuario;
                         es.mostrarMensaje("Se ha publicado el mensaje: " + publicacionFinal);
                         lecturaEscritura.escribirFichero(rutaFicheroMensajes, publicacionFinal);
                     } else {
                         System.out.println("Has alcanzado el limite de publicaciones para tu cuenta gratuita.");
+                        es.limpiarEntrada();
+                        return;
                     }
                 } catch (IOException e) {
                     System.err.println("Error al crear el fichero de mensajes: " + e.getMessage());
@@ -159,8 +170,13 @@ public class Gestion {
     }
 
     protected void verMensajesPublicados() {
-        System.out.println("Mostrando todos los mensajes publicados: ");
-        lecturaEscritura.leerFichero(rutaFicheroMensajes);
+        if (Files.exists(rutaFicheroMensajes)) {
+            System.out.println("Mostrando todos los mensajes publicados: ");
+            lecturaEscritura.leerFichero(rutaFicheroMensajes);
+        } else {
+            System.out.println("Todavia no hay mensajes publicados");
+        }
+
     }
 
     private void crearCuentaPremium(ArrayList<CuentaUsuario> cuentas) {
@@ -176,7 +192,7 @@ public class Gestion {
 
             } else {
                 email = es.leerTexto("Introduce el email: ");
-                biografia = es.leerTexto("Introduce la biografia de tu perfil: ");
+                biografia = es.leerCadenaTexto("Introduce la biografia de tu perfil: ");
                 telefono = es.leerTexto("Ingresa tu numero de telefono: ");
                 if (comprobarTelefono(telefono)) {
                     System.out.println("El numero de telefono es correcto.");
@@ -252,6 +268,8 @@ public class Gestion {
     private boolean comprobarEdad(int edad) throws EdadInvalida {
         if (edad < 16) {
             throw new EdadInvalida("No puedes utilizar nuestro servicio si eres menor de 16 años");
+        } else if (edad > 130) {
+            throw new EdadInvalida("La edad es incorrecta, no puedes tener mas de 130 años");
         }
         return true;
     }

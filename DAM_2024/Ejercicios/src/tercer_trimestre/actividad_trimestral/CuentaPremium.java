@@ -62,6 +62,6 @@ public class CuentaPremium extends CuentaUsuario implements OperacionesCuenta {
         //Se aplica el formato
         String fechaFormateada = fechaYHora.format(formato);
         //Se imprime junto al mensaje
-        return fechaFormateada + " Mensaje --> " + mensaje;
+        return fechaFormateada + " | Mensaje --> " + mensaje;
     }
 }

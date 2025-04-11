@@ -45,22 +45,20 @@ public class LecturaEscrituraFichero {
         if (!Files.exists(rutaFichero)) {
             Files.createFile(rutaFichero);
             System.out.println("El fichero " + rutaFichero + " ha sido creado correctamente.");
-        } else {
-            System.out.println("El fichero " + rutaFichero + " ya existe");
         }
     }
 
 
     protected void escribirFichero(Path rutaFichero, String mensaje) throws IOException {
-        //Se invoca al metodo de creaccion de fichero
-
-        crearFichero(rutaFichero);
-
+        //Se invoca al metodo de creaccion de fichero si este mismo no existe
+        if (!Files.exists(rutaFichero)) {
+            crearFichero(rutaFichero);
+        }
         //Try-with-resources no es necesario cerrar el fujo de datos explicitamente
-
-        try (FileWriter fw = new FileWriter(rutaFichero.toFile())) {
-            fw.write(mensaje);
-
+        //parametro true para sobreescribir el fichero
+        try (FileWriter fw = new FileWriter(rutaFichero.toFile(), true)) {
+            //Retrono de carro y salto de linea dentro del fichero
+            fw.write(mensaje + "\r\n");
         } catch (IOException e) {
             System.out.println("Error al almacenar los datos: " + e.getMessage());
         }
