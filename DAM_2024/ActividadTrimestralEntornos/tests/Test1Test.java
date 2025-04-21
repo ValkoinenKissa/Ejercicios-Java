@@ -4,7 +4,7 @@ public class Test1Test {
 
     @org.junit.Test
     public void multiplica() {
-        int expResult = 4; //Cambiamos el resultado esperado para provocar un fallo (2*2 = 4) el 5 provoca un fallo
+        int expResult = 4;
         Test1 instance = new Test1();
         int a=2;
         int b=2;
