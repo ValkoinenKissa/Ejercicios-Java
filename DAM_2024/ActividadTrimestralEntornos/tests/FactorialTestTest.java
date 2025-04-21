@@ -8,7 +8,7 @@ public class FactorialTestTest {
     public void factorial() {
         int expResult = 6;
         int numero = 3;
-        Test1 instance = new Test1();
+        FactorialTest instance = new FactorialTest();
         int result = instance.factorial(numero);
         assertEquals(expResult, result);
     }
