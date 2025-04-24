@@ -76,6 +76,7 @@ public class Gestion {
                     break;
                 case 4:
                     System.out.println("Abandonando el menu...");
+                    break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
