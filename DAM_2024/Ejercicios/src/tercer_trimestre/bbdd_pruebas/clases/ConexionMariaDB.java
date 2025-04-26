@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Ejemplo1 {
+public class ConexionMariaDB {
     public static void main(String[] args) throws SQLException {
         String bbdd = "jdbc:mariadb://localhost:3306/mcgrawpeliculas";
         String usr = "root";
