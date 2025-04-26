@@ -9,7 +9,6 @@ public class Ejemplo1 {
         String bbdd = "jdbc:mariadb://localhost:3306/mcgrawpeliculas";
         String usr = "root";
         String pass = "";
-        //Try-with resources no es necesario cerrar la conex manualmente
         try (Connection conn = DriverManager.getConnection(bbdd, usr, pass)) {
             System.out.println("Conexion exitosa");
         } catch (SQLException e) {
