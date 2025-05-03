@@ -1,0 +1,8 @@
+.boton_personalizado {
+    -fx-background-color: linear-gradient(to bottom, #b7ffc3, #8af893);
+    -fx-border-color: #53df33;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+}

@@ -21,7 +21,7 @@
                <TextField fx:id="userTextField" layoutX="166.0" layoutY="56.0" />
                <Label layoutX="220.0" layoutY="39.0" text="Usuario" />
                <Label layoutX="211.0" layoutY="100.0" text="Contraseña" />
-              <Button layoutX="215.0" layoutY="161.0" onAction="#onHelloButtonClick" text="Log In" textFill="#11ff18" />
+              <Button layoutX="215.0" layoutY="161.0" onAction="#onHelloButtonClick" styleClass="boton_personalizado" text="Log In" textFill="#11ff18" />
             </children>
          </AnchorPane>
        </header>
