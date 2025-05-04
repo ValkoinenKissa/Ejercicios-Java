@@ -1,4 +1,4 @@
-package tercer_trimestre.rpaso_examen.matrices;
+package tercer_trimestre.repaso_examen.matrices;
 
 
 import java.util.Random;

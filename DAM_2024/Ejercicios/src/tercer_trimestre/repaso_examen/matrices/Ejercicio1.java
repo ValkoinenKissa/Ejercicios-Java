@@ -1,4 +1,4 @@
-package tercer_trimestre.rpaso_examen.matrices;
+package tercer_trimestre.repaso_examen.matrices;
 /*
 Crear e imprimir una matriz
 Crea una matriz de 3x3 con números introducidos por el usuario y muéstrala por pantalla.
