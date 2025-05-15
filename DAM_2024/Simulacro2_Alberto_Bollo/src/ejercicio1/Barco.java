@@ -37,7 +37,7 @@ public abstract class Barco implements Capacidad{
         this.velocidadMaxima = velocidadMaxima;
     }
 
-    abstract String mostrarInformacion();
+    public abstract String mostrarInformacion();
 
     public String getId() {
         return id;
