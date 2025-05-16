@@ -8,9 +8,10 @@ a) Metodo calcularCapacidad()
  */
 //Implementamos la interfaz capacidad en la clase abstracta para obligar a todas las clases que hereden de barco a implementarla
 public abstract class Barco implements Capacidad{
-    private String nombre;
-    private String id;
-    private int velocidadMaxima;
+    //Atributos establecidos como final, ya que no son modificados con setters y no van a cambiar durante la vida del objeto
+    private final String nombre;
+    private final String id;
+    private final int velocidadMaxima;
 
     //Constructor de barco, se sobreescribira el constructor en clases que hereden, ya que de esta clase al ser abstracta no podemos obtener una instancia
 
@@ -24,24 +25,12 @@ public abstract class Barco implements Capacidad{
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public int getVelocidadMaxima() {
         return velocidadMaxima;
-    }
-
-    public void setVelocidadMaxima(int velocidadMaxima) {
-        this.velocidadMaxima = velocidadMaxima;
     }
 
     //Metodo abstracto obtener informacion
