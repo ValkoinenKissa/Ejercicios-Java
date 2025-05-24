@@ -6,10 +6,10 @@ public class Test1Test {
     @Test
     public void multiplicar() {
         System.out.println("multiplica");
-        int a=2;
-        int b=2;
+        int a=6;
+        int b=6;
         Test1 instance =new Test1();
-        int expResult =4;
+        int expResult =36;
         int result= instance.multiplicar (a,b);
         assertEquals (expResult, result);
     }

@@ -5,10 +5,9 @@ public class Test1 {
     }
 
     public int factorial(int numero) {
-        int factorial = numero;
-        for (int i = (numero - 1); i > 1; i--) {
-            factorial = factorial * i;
-        }
-        return factorial;
+       if(numero <= 1){
+           return 1;
+       }
+       return numero * factorial(numero -1);
     }
 }
