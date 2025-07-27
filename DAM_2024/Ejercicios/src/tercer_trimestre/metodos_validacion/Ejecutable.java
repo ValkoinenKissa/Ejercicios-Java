@@ -4,7 +4,7 @@ public class Ejecutable {
     public static void main(String[] args){
         try {
             ValidadorTelefono.validar("612345678");
-            ValidadorDNI.validar("12345678Z");
+            ValidadorDNI.validar("1999999999H");
             ValidadorCodigoPostal.validar("28080");
             ValidadorCorreo.validar("ejemplo@correo.com");
             System.out.println("Validación correcta.");
