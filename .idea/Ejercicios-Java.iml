@@ -2,7 +2,23 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2023/EjerciciosRepaso/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2023/Experimentos/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2023/Juegos/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2023/Repaso_exmaen/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/ActividadTrimestralEntornos/out" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/Examen_AlbertoBollo/out" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/HelloFX/.settings" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/HelloFX/bin/.settings" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/HelloFX/bin/target" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/HelloFX/target" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/Simulacro2_Alberto_Bollo/out" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/Simulacro2_v2/out" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/Simulacro2_v3/out" />
+      <excludeFolder url="file://$MODULE_DIR$/DAM_2024/TestsJunit/out" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
