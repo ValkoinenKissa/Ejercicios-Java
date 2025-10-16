@@ -31,7 +31,7 @@ import java.util.ArrayList;
  *      - Leer y mostrar la información de los usuarios.
  */
 public class Ejecutable {
-    public static void main(String[] args) {
+    public static void main() {
         ArrayList<CuentaUsuario> listaCuentas = new ArrayList<>();
         Menu menu = new Menu();
         EntradaSalida es = new EntradaSalida();
