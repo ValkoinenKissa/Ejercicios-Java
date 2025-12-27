@@ -1,2 +1,2 @@
 # Ejercicios Java
-> Todos los ejercicios vistos durante el primer curso de DAM
+> Todos los ejercicios y proyectos vistos durante el primer curso de DAM
